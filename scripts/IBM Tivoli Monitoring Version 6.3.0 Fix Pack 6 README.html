@@ -1,0 +1,2577 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!-- saved from url=(0292)https://delivery04.dhe.ibm.com/sdfdl/v2/sar/CM/TI/05uba/0/Xa.2/Xb.jusyLTSp44S0BnqOpc-%2DyPaHuK4xI7y904mn__DN_8Tv0ych5oAm0U9XW2g/Xc.CM/TI/05uba/0/6.3.0-TIV-ITM-FP0006_README.html/Xd./Xf.LPR.D1vk/Xg.8501473/Xi.habanero/XY.habanero/XZ.nCrDfOkADA_Ci6VVctNTqFllbT8/6.3.0-TIV-ITM-FP0006_README.html -->
+<html><head style="     font-family: Arial,Helvetica,sans-serif;"><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+    
+    <title>IBM Tivoli Monitoring Version 6.3.0 Fix Pack 6 README</title>
+    <style type="text/css">
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	margin-left:10px;
+}
+table {
+	border-width: 1px;
+	border-spacing: 0px;
+	border-style: solid;
+	border-color: gray;
+	border-collapse: collapse;
+}
+table td, th {
+	border-width: 1px;
+	padding: 2px;
+	border-style: solid;
+	border-color: gray;
+	vertical-align: top;
+}
+table th {
+	background-color: #eeeeee;
+	text-align: left;
+}
+.editor-note {
+	color: red;
+	font-weight: bold;
+}
+.hidden-sample {
+	background-color:#F3F3F3;
+	margin-left:30px;
+}
+.indent-level1 {
+	margin-left:30px;
+}
+.indent-level2 {
+	margin-left:60px;
+}
+.border0 {
+	border: 2px solid blue;
+	padding: 10px;
+}
+.border1 {
+	border: 2px solid yellow;
+	padding: 10px;
+}
+
+</style> <script type="text/javascript" language="javascript">
+  function toggleDiv(divid){
+    if(document.getElementById(divid).style.display == 'none'){
+      document.getElementById(divid).style.display = 'block';
+    }else{
+      document.getElementById(divid).style.display = 'none';
+    }
+  }
+  var n = 0;
+  function changeBorder() {
+	  if (n == 0) {
+		  n = 1;
+	  } else {
+		  n = 0;
+	  }
+	  document.getElementById("important").className = "border"+n;
+  }
+  function flashIt() {
+	  //setInterval(changeBorder, 1000);
+  }
+
+  </script>
+  <style type="text/css"></style></head>
+  <body onload="flashIt();" class=" hasGoogleVoiceExt">&nbsp;&nbsp; &nbsp;
+    <h1>IBM Tivoli Monitoring Version 6.3.0 Fix Pack 6 README</h1>
+    <h2>Abstract</h2>
+    <p>README documentation for IBM Tivoli Monitoring for Version 6.3.0 Fix Pack 6 including installation-related instructions, prerequisites and
+      corequisites, and list of fixes.</p>
+    <p> <br>
+      <strong>README file for:</strong> IBM Tivoli Monitoring<br>
+      <strong>Product/Component Release:</strong>6.3.0<br>
+      <strong>Update Name:</strong>Fix Pack 6<br>
+      <strong>Fix ID:</strong> 6.3.0-TIV-ITM-FP0006<br>
+      <strong>Publication date:</strong>December 11, 2015<br> 
+	  <strong>Last modified date:</strong>December 11, 2015<br> <br>
+    </p>
+    <div id="important" class="border0"><span class="editor-note"></span> <strong>Important
+        items to be aware of in this maintenance release:</strong><br>
+      <ol>
+		  <li>IBM Tivoli Monitoring version 6.3.0 Fix Pack 6 is available as a 
+			  pristine install, eliminating the need to install base code then 
+			  upgrade.   See section <a href="https://delivery04.dhe.ibm.com/sdfdl/v2/sar/CM/TI/05uba/0/Xa.2/Xb.jusyLTSp44S0BnqOpc--yPaHuK4xI7y904mn__DN_8Tv0ych5oAm0U9XW2g/Xc.CM/TI/05uba/0/6.3.0-TIV-ITM-FP0006_README.html/Xd./Xf.LPR.D1vk/Xg.8501473/Xi.habanero/XY.habanero/XZ.nCrDfOkADA_Ci6VVctNTqFllbT8/6.3.0-TIV-ITM-FP0006_README.html#pristine_install">Pristine 
+			  Install Locations</a> for more information.<br>
+        </li><li>Starting with IBM Tivoli Monitoring 6.3.0 Fix Pack 2, the IBM Tivoli
+          Monitoring installer now automatically performs a prerequisite scan of
+          the system to ensure a successful installation. This scan is performed
+          for both the server and agent components. The default behavior is to
+          exit the installation if a prerequisite is not met. You may disable
+          the prerequisite scan run as a configurable option during
+          installation. Please refer to the <a href="http://www.ibm.com/support/knowledgecenter/SSTFXA_6.3.0.2//com.ibm.itm.doc_6.3fp2/install/itm_install.htm">
+            ITM 6.3.0.2 Installation Guide</a> for more details.</li>
+        <li>Starting with IBM Tivoli Monitoring 6.3.0 Fix Pack 2, the default
+          behavior for enforcement of security policies for Take Action commands
+          has been reversed from the GA behavior. The default is now that
+          auditing is off. If auditing is desired, it must be explicitly
+          configured. Please refer to this technote for details: <a href="http://www.ibm.com/support/docview.wss?uid=swg27038508">http://www.ibm.com/support/docview.wss?uid=swg27038508</a></li>
+        <li>Upgrading or installing the server dashboards component which runs
+          in JazzSM's Dashboard Application Services Hub (DASH) will cause the
+          WebSphere Application Server for DASH to be restarted. Please plan
+          accordingly.</li>
+        <li>Upgrading a 32-bit portal server in a 64-bit environment may require
+          manual intervention if IBM Installation Manager is already installed
+          on the machine. Please refer to the "Prior to installation" section of
+          this README.</li>
+        <li>Prior to version 6.3.0 Fix Pack 1 of ITM, 32-bit and 64-bit GSKit
+          were both always installed on a 64-bit system. Release 6.3.0 Fix Pack
+          1 and later versions install only the version(s) required by
+          components selected for installation or upgrade. Refer to this
+          technote for more information: <a href="http://www.ibm.com/support/docview.wss?uid=swg21634860">http://www.ibm.com/support/docview.wss?uid=swg21634860</a></li>
+		  <li> The following packages have been upgraded in the Fix Pack.  These package represents a change from the levels that were shipped with 6.3.0 Fix Pack 5. No user action is required. </li>
+		  <ul>
+			  
+        <li>The Java RunTime Environment (JRE) packages that are shipped with
+          IBM Tivoli Monitoring have been upgraded to the following:
+			<ul>
+				<li>1.7.0 SR9 FP1 for CANDLEHOME on AIX, Linux, Solaris, and Windows </li>
+				<li>1.6.0 SR16 FP5 for CANDLEHOME HP-UX</li>
+				<li>1.7.1 SR3 FP10 for Tivoli Enterprise Portal (TEP) browser clients</li>
+			</ul>
+		  </li></ul>
+        <li>Please be sure to read the section "Prior to installation" before
+          proceeding with this installation.</li>
+      </ol>
+      Note: Recent Java updates have caused connection problems when logging
+      into the portal server via the Tivoli Enterprise Portal browser and
+      WebStart clients. Refer to technote #1672459 for important information
+      regarding the latest Java Support requirements: <a href="http://www.ibm.com/support/docview.wss?uid=swg21672459">http://www.ibm.com/support/docview.wss?uid=swg21672459</a>
+    </div>
+    <h2>Contents</h2>
+    <p><a href="https://delivery04.dhe.ibm.com/sdfdl/v2/sar/CM/TI/05uba/0/Xa.2/Xb.jusyLTSp44S0BnqOpc--yPaHuK4xI7y904mn__DN_8Tv0ych5oAm0U9XW2g/Xc.CM/TI/05uba/0/6.3.0-TIV-ITM-FP0006_README.html/Xd./Xf.LPR.D1vk/Xg.8501473/Xi.habanero/XY.habanero/XZ.nCrDfOkADA_Ci6VVctNTqFllbT8/6.3.0-TIV-ITM-FP0006_README.html#download">Download location</a><br>
+      <a href="https://delivery04.dhe.ibm.com/sdfdl/v2/sar/CM/TI/05uba/0/Xa.2/Xb.jusyLTSp44S0BnqOpc--yPaHuK4xI7y904mn__DN_8Tv0ych5oAm0U9XW2g/Xc.CM/TI/05uba/0/6.3.0-TIV-ITM-FP0006_README.html/Xd./Xf.LPR.D1vk/Xg.8501473/Xi.habanero/XY.habanero/XZ.nCrDfOkADA_Ci6VVctNTqFllbT8/6.3.0-TIV-ITM-FP0006_README.html#prereqs">Prerequisites and corequisites</a><br>
+      <a href="https://delivery04.dhe.ibm.com/sdfdl/v2/sar/CM/TI/05uba/0/Xa.2/Xb.jusyLTSp44S0BnqOpc--yPaHuK4xI7y904mn__DN_8Tv0ych5oAm0U9XW2g/Xc.CM/TI/05uba/0/6.3.0-TIV-ITM-FP0006_README.html/Xd./Xf.LPR.D1vk/Xg.8501473/Xi.habanero/XY.habanero/XZ.nCrDfOkADA_Ci6VVctNTqFllbT8/6.3.0-TIV-ITM-FP0006_README.html#issues">Known issues</a><br>
+      <a href="https://delivery04.dhe.ibm.com/sdfdl/v2/sar/CM/TI/05uba/0/Xa.2/Xb.jusyLTSp44S0BnqOpc--yPaHuK4xI7y904mn__DN_8Tv0ych5oAm0U9XW2g/Xc.CM/TI/05uba/0/6.3.0-TIV-ITM-FP0006_README.html/Xd./Xf.LPR.D1vk/Xg.8501473/Xi.habanero/XY.habanero/XZ.nCrDfOkADA_Ci6VVctNTqFllbT8/6.3.0-TIV-ITM-FP0006_README.html#limitations">Known limitations</a><br>
+      <br>
+      <strong>Installation information</strong> </p>
+    <blockquote> <a href="https://delivery04.dhe.ibm.com/sdfdl/v2/sar/CM/TI/05uba/0/Xa.2/Xb.jusyLTSp44S0BnqOpc--yPaHuK4xI7y904mn__DN_8Tv0ych5oAm0U9XW2g/Xc.CM/TI/05uba/0/6.3.0-TIV-ITM-FP0006_README.html/Xd./Xf.LPR.D1vk/Xg.8501473/Xi.habanero/XY.habanero/XZ.nCrDfOkADA_Ci6VVctNTqFllbT8/6.3.0-TIV-ITM-FP0006_README.html#before_installing">Prior to installation</a><br>
+      <a href="https://delivery04.dhe.ibm.com/sdfdl/v2/sar/CM/TI/05uba/0/Xa.2/Xb.jusyLTSp44S0BnqOpc--yPaHuK4xI7y904mn__DN_8Tv0ych5oAm0U9XW2g/Xc.CM/TI/05uba/0/6.3.0-TIV-ITM-FP0006_README.html/Xd./Xf.LPR.D1vk/Xg.8501473/Xi.habanero/XY.habanero/XZ.nCrDfOkADA_Ci6VVctNTqFllbT8/6.3.0-TIV-ITM-FP0006_README.html#installing">Installing</a><br>
+      <a href="https://delivery04.dhe.ibm.com/sdfdl/v2/sar/CM/TI/05uba/0/Xa.2/Xb.jusyLTSp44S0BnqOpc--yPaHuK4xI7y904mn__DN_8Tv0ych5oAm0U9XW2g/Xc.CM/TI/05uba/0/6.3.0-TIV-ITM-FP0006_README.html/Xd./Xf.LPR.D1vk/Xg.8501473/Xi.habanero/XY.habanero/XZ.nCrDfOkADA_Ci6VVctNTqFllbT8/6.3.0-TIV-ITM-FP0006_README.html#after_installation">Performing the necessary tasks after
+        installation</a> <br>
+      <a href="https://delivery04.dhe.ibm.com/sdfdl/v2/sar/CM/TI/05uba/0/Xa.2/Xb.jusyLTSp44S0BnqOpc--yPaHuK4xI7y904mn__DN_8Tv0ych5oAm0U9XW2g/Xc.CM/TI/05uba/0/6.3.0-TIV-ITM-FP0006_README.html/Xd./Xf.LPR.D1vk/Xg.8501473/Xi.habanero/XY.habanero/XZ.nCrDfOkADA_Ci6VVctNTqFllbT8/6.3.0-TIV-ITM-FP0006_README.html#security_updates">Post installation security updates</a> <br>
+      <a href="https://delivery04.dhe.ibm.com/sdfdl/v2/sar/CM/TI/05uba/0/Xa.2/Xb.jusyLTSp44S0BnqOpc--yPaHuK4xI7y904mn__DN_8Tv0ych5oAm0U9XW2g/Xc.CM/TI/05uba/0/6.3.0-TIV-ITM-FP0006_README.html/Xd./Xf.LPR.D1vk/Xg.8501473/Xi.habanero/XY.habanero/XZ.nCrDfOkADA_Ci6VVctNTqFllbT8/6.3.0-TIV-ITM-FP0006_README.html#troubleshoot">Troubleshooting installation problems from the
+        Support site</a> </blockquote>
+    <strong>Language Pack Installation information</strong>
+    <blockquote><a href="https://delivery04.dhe.ibm.com/sdfdl/v2/sar/CM/TI/05uba/0/Xa.2/Xb.jusyLTSp44S0BnqOpc--yPaHuK4xI7y904mn__DN_8Tv0ych5oAm0U9XW2g/Xc.CM/TI/05uba/0/6.3.0-TIV-ITM-FP0006_README.html/Xd./Xf.LPR.D1vk/Xg.8501473/Xi.habanero/XY.habanero/XZ.nCrDfOkADA_Ci6VVctNTqFllbT8/6.3.0-TIV-ITM-FP0006_README.html#LPinstalling">Installing</a><br>
+    </blockquote>
+    <a href="https://delivery04.dhe.ibm.com/sdfdl/v2/sar/CM/TI/05uba/0/Xa.2/Xb.jusyLTSp44S0BnqOpc--yPaHuK4xI7y904mn__DN_8Tv0ych5oAm0U9XW2g/Xc.CM/TI/05uba/0/6.3.0-TIV-ITM-FP0006_README.html/Xd./Xf.LPR.D1vk/Xg.8501473/Xi.habanero/XY.habanero/XZ.nCrDfOkADA_Ci6VVctNTqFllbT8/6.3.0-TIV-ITM-FP0006_README.html#additional_info">Additional Information</a><br>
+    <a href="https://delivery04.dhe.ibm.com/sdfdl/v2/sar/CM/TI/05uba/0/Xa.2/Xb.jusyLTSp44S0BnqOpc--yPaHuK4xI7y904mn__DN_8Tv0ych5oAm0U9XW2g/Xc.CM/TI/05uba/0/6.3.0-TIV-ITM-FP0006_README.html/Xd./Xf.LPR.D1vk/Xg.8501473/Xi.habanero/XY.habanero/XZ.nCrDfOkADA_Ci6VVctNTqFllbT8/6.3.0-TIV-ITM-FP0006_README.html#new_features">New Features</a><br>
+    <a href="https://delivery04.dhe.ibm.com/sdfdl/v2/sar/CM/TI/05uba/0/Xa.2/Xb.jusyLTSp44S0BnqOpc--yPaHuK4xI7y904mn__DN_8Tv0ych5oAm0U9XW2g/Xc.CM/TI/05uba/0/6.3.0-TIV-ITM-FP0006_README.html/Xd./Xf.LPR.D1vk/Xg.8501473/Xi.habanero/XY.habanero/XZ.nCrDfOkADA_Ci6VVctNTqFllbT8/6.3.0-TIV-ITM-FP0006_README.html#documentation_updates">Documentation Updates</a><br>
+    <a href="https://delivery04.dhe.ibm.com/sdfdl/v2/sar/CM/TI/05uba/0/Xa.2/Xb.jusyLTSp44S0BnqOpc--yPaHuK4xI7y904mn__DN_8Tv0ych5oAm0U9XW2g/Xc.CM/TI/05uba/0/6.3.0-TIV-ITM-FP0006_README.html/Xd./Xf.LPR.D1vk/Xg.8501473/Xi.habanero/XY.habanero/XZ.nCrDfOkADA_Ci6VVctNTqFllbT8/6.3.0-TIV-ITM-FP0006_README.html#fixes">List of fixes </a><br>
+    <a href="https://delivery04.dhe.ibm.com/sdfdl/v2/sar/CM/TI/05uba/0/Xa.2/Xb.jusyLTSp44S0BnqOpc--yPaHuK4xI7y904mn__DN_8Tv0ych5oAm0U9XW2g/Xc.CM/TI/05uba/0/6.3.0-TIV-ITM-FP0006_README.html/Xd./Xf.LPR.D1vk/Xg.8501473/Xi.habanero/XY.habanero/XZ.nCrDfOkADA_Ci6VVctNTqFllbT8/6.3.0-TIV-ITM-FP0006_README.html#copyright">Copyright and trademark information</a><br>
+    <a href="https://delivery04.dhe.ibm.com/sdfdl/v2/sar/CM/TI/05uba/0/Xa.2/Xb.jusyLTSp44S0BnqOpc--yPaHuK4xI7y904mn__DN_8Tv0ych5oAm0U9XW2g/Xc.CM/TI/05uba/0/6.3.0-TIV-ITM-FP0006_README.html/Xd./Xf.LPR.D1vk/Xg.8501473/Xi.habanero/XY.habanero/XZ.nCrDfOkADA_Ci6VVctNTqFllbT8/6.3.0-TIV-ITM-FP0006_README.html#change_history">Document change history</a><br>
+    <br>
+    <br>
+    <!---------------------------------------------------------->
+    <!---   Download Locations                                   --->                                 
+    <!---------------------------------------------------------->
+    <h2><a name="download"></a>Download Locations</h2>
+	<h3><a name="upgrade_install">Upgrade Install Locations</a></h3>
+    <p>Download IBM Tivoli Monitoring Version 6.3.0 Fix Pack 6 upgrade 
+      images from the following location: <br>
+	<a href="http://www.ibm.com/support/fixcentral/swg/quickorder?parent=ibm%7ETivoli&amp;product=ibm/Tivoli/IBM+Tivoli+Monitoring&amp;release=All&amp;platform=All&amp;function=fixId&amp;fixids=6.3.0-TIV-ITM-FP0006&amp;source=fc" target="_blank">http://www.ibm.com/support/fixcentral/swg/quickorder?parent=ibm~Tivoli&amp;product=ibm/Tivoli/IBM+Tivoli+Monitoring&amp;release=All&amp;platform=All&amp;function=fixId&amp;fixids=6.3.0-TIV-ITM-FP0006&amp;source=fc</a>
+      <br>
+      <br>
+      Alternatively, access the fix from the table below.</p>
+    Below is a list of components, platforms, and file names that apply to this
+    README file.<br>
+    <table style="border-width: 1px; width: 800px;" cellpadding="2" cellspacing="2">
+      <tbody>
+        <tr>
+          <th style="">Product/Component Name<br>
+          </th>
+          <th style="width: 125px;">Platform<br>
+          </th>
+          <th>File Name<br>
+          </th>
+        </tr>
+        <tr>
+          <td>IBM Tivoli Monitoring Base</td>
+          <td>64-bit Windows</td>
+          <td><a href="http://www.ibm.com/support/fixcentral/swg/quickorder?parent=ibm%7ETivoli&amp;product=ibm/Tivoli/IBM+Tivoli+Monitoring&amp;release=All&amp;platform=All&amp;function=fixId&amp;fixids=6.3.0-TIV-ITM_TMV-Windows64-FP0006&amp;includeSupersedes=0&amp;source=fc" target="_blank">6.3.0-TIV-ITM_TMV-Windows64-FP0006.zip</a></td>
+        </tr>
+        <tr>
+          <td>IBM Tivoli Monitoring Base</td>
+          <td>32-bit Windows</td>
+          <td><a href="http://www.ibm.com/support/fixcentral/swg/quickorder?parent=ibm%7ETivoli&amp;product=ibm/Tivoli/IBM+Tivoli+Monitoring&amp;release=All&amp;platform=All&amp;function=fixId&amp;fixids=6.3.0-TIV-ITM_TMV-Windows-FP0006&amp;includeSupersedes=0&amp;source=fc" target="_blank">6.3.0-TIV-ITM_TMV-Windows-FP0006.zip</a></td>
+        </tr>
+        <tr>
+          <td>IBM Tivoli Monitoring Base</td>
+          <td>UNIX</td>
+          <td><a href="http://www.ibm.com/support/fixcentral/swg/quickorder?parent=ibm%7ETivoli&amp;product=ibm/Tivoli/IBM+Tivoli+Monitoring&amp;release=All&amp;platform=All&amp;function=fixId&amp;fixids=6.3.0-TIV-ITM_TMV-Unix-FP0006&amp;includeSupersedes=0&amp;source=fc" target="_blank">6.3.0-TIV-ITM_TMV-Unix-FP0006.tar.gz</a></td>
+        </tr>
+        <tr>
+          <td>IBM Tivoli Monitoring Base</td>
+          <td>64-bit Linux(R) on AMD64 and Intel(R) EMT systems</td>
+          <td><a href="http://www.ibm.com/support/fixcentral/swg/quickorder?parent=ibm%7ETivoli&amp;product=ibm/Tivoli/IBM+Tivoli+Monitoring&amp;release=All&amp;platform=All&amp;function=fixId&amp;fixids=6.3.0-TIV-ITM_TMV-Linuxx64-FP0006&amp;includeSupersedes=0&amp;source=fc" target="_blank">6.3.0-TIV-ITM_TMV-Linuxx64-FP0006.tar.gz</a></td>
+        </tr>
+        <tr>
+          <td>IBM Tivoli Monitoring Base</td>
+          <td>32-bit Linux(R) on AMD and Intel(R) systems</td>
+          <td><a href="http://www.ibm.com/support/fixcentral/swg/quickorder?parent=ibm%7ETivoli&amp;product=ibm/Tivoli/IBM+Tivoli+Monitoring&amp;release=All&amp;platform=All&amp;function=fixId&amp;fixids=6.3.0-TIV-ITM_TMV-Linuxx-FP0006&amp;includeSupersedes=0&amp;source=fc" target="_blank">6.3.0-TIV-ITM_TMV-Linuxx-FP0006.tar.gz</a></td>
+        </tr>
+        <tr>
+          <td>IBM Tivoli Monitoring Base</td>
+          <td>Linux(R) on System z</td>
+          <td><a href="http://www.ibm.com/support/fixcentral/swg/quickorder?parent=ibm%7ETivoli&amp;product=ibm/Tivoli/IBM+Tivoli+Monitoring&amp;release=All&amp;platform=All&amp;function=fixId&amp;fixids=6.3.0-TIV-ITM_TMV-Linuxz-FP0006&amp;includeSupersedes=0&amp;source=fc" target="_blank">6.3.0-TIV-ITM_TMV-Linuxz-FP0006.tar.gz</a></td>
+        </tr>
+        <tr>
+          <td>IBM Tivoli Monitoring Base Agents</td>
+          <td>All</td>
+          <td><a href="http://www.ibm.com/support/fixcentral/swg/quickorder?parent=ibm%7ETivoli&amp;product=ibm/Tivoli/IBM+Tivoli+Monitoring&amp;release=All&amp;platform=All&amp;function=fixId&amp;fixids=6.3.0-TIV-ITM_TMV-Agents-FP0006&amp;includeSupersedes=0&amp;source=fc" target="_blank">6.3.0-TIV-ITM_TMV-Agents-FP0006.tar.gz</a></td>
+        </tr>
+        <tr>
+          <td>IBM Tivoli Monitoring Tools</td>
+          <td>All</td>
+          <td><a href="http://www.ibm.com/support/fixcentral/swg/quickorder?parent=ibm%7ETivoli&amp;product=ibm/Tivoli/IBM+Tivoli+Monitoring&amp;release=All&amp;platform=All&amp;function=fixId&amp;fixids=6.3.0-TIV-ITM_TMV-Tools-FP0006&amp;includeSupersedes=0&amp;source=fc" target="_blank">6.3.0-TIV-ITM_TMV-Tools-FP0006.tar.gz</a></td>
+        </tr>
+        <tr>
+          <td>IBM Tivoli Monitoring Agent Reports</td>
+          <td>All</td>
+          <td><a href="http://www.ibm.com/support/fixcentral/swg/quickorder?parent=ibm%7ETivoli&amp;product=ibm/Tivoli/IBM+Tivoli+Monitoring&amp;release=All&amp;platform=All&amp;function=fixId&amp;fixids=6.3.0-TIV-ITM_TMV-Agent-Reports-FP0006&amp;includeSupersedes=0&amp;source=fc" target="_blank">6.3.0-TIV-ITM_TMV-Agent-Reports-FP0006.tar.gz</a></td>
+        </tr>
+        <tr>
+          <td>IBM Tivoli Monitoring Tivoli Performance Analyzer Reports and
+            Domain Definitions </td>
+          <td>All</td>
+          <td><a href="http://www.ibm.com/support/fixcentral/swg/quickorder?parent=ibm%7ETivoli&amp;product=ibm/Tivoli/IBM+Tivoli+Monitoring&amp;release=All&amp;platform=All&amp;function=fixId&amp;fixids=6.3.0-TIV-ITM_TMV-ITPA-Common-FP0006&amp;includeSupersedes=0&amp;source=fc" target="_blank">6.3.0-TIV-ITM_TMV-ITPA-Common-FP0006.tar.gz</a></td>
+        </tr>
+        <tr>
+          <td>IBM Tivoli Monitoring Language Pack</td>
+          <td>All</td>
+          <td><a href="http://www.ibm.com/support/fixcentral/swg/quickorder?parent=ibm%7ETivoli&amp;product=ibm/Tivoli/IBM+Tivoli+Monitoring&amp;release=All&amp;platform=All&amp;function=fixId&amp;fixids=6.3.0-TIV-ITM_TMV-LP-FP0006&amp;includeRequisites=1&amp;source=fc" target="_blank">6.3.0-TIV-ITM_TMV-LP-FP0006.tar.gz</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <br> The component below has not been updated for 6.30 Fix Pack 6. The 
+	version listed below can be used with Fix Pack 6.<br> 
+	<br>
+    <table style="border-width: 1px; width: 800px;" cellpadding="2" cellspacing="2">
+      <tbody>
+        <tr>
+          <th style="">Product/Component Name<br>
+          </th>
+          <th style="width: 125px;">Platform<br>
+          </th>
+          <th>File Name<br>
+          </th>
+        </tr>
+        <tr>
+          <td>IBM Tivoli Monitoring Dashboards for Servers and Authorization
+            Policy Components</td>
+          <td>All</td>
+          <td><a href="http://www.ibm.com/support/fixcentral/swg/quickorder?parent=ibm%7ETivoli&amp;product=ibm/Tivoli/IBM+Tivoli+Monitoring&amp;release=All&amp;platform=All&amp;function=fixId&amp;fixids=6.3.0-TIV-ITM_TMV-Dashboards-Authorization_Policy-FP0002&amp;includeRequisites=1&amp;source=fc" target="_blank">6.3.0-TIV-ITM_TMV-Dashboards-Authorization_Policy-FP0002.zip</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+	  <h3><a name="pristine_install">Pristine Install Locations</a></h3>
+    <p>Download IBM Tivoli Monitoring Version 6.3.0 Fix Pack 6 pristine 
+      images from the  IBM Passport Advantage® Online Website. </p>
+	  <p>Tivoli Monitoring Software:</p>
+    <table style="border-width: 1px; width: 800px;" cellpadding="2" cellspacing="2">
+      <tbody>
+        <tr>
+          <th style="">Number of eAssembly to download<br>
+          </th>
+          <th style="width: 125px;">Number of part to download<br>
+          </th>
+          <th>Title on Passport Advantage<br>
+          </th>
+          <th>Contents<br>
+          </th>
+        </tr>
+        <tr>
+          <td>CRYB4ML</td>
+          <td>CN8CPEN</td>
+          <td>IBM Tivoli Monitoring V6.3.0.6 Base, Windows (32 Bit env.), English </td>
+          <td>Tivoli Enterprise Monitoring Server, Tivoli Enterprise Portal 
+			  Server, Tivoli Enterprise Portal Client, Tivoli Data Warehouse 
+			  agents, and application support in English for base agents for 
+			  32-bit Windows operating systems </td>
+        </tr>
+        <tr>
+          <td>CRYB4ML</td>
+          <td>CN8CQEN</td>
+          <td>IBM Tivoli Monitoring V6.3.0.6 Base, Windows (64 Bit env.), English 
+          </td><td>Tivoli Enterprise Monitoring Server, Tivoli Enterprise Portal Server, Tivoli Enterprise Portal Client, Tivoli Data Warehouse agents, and application support for base agents in English for 64-bit Windows operating systems 
+          </td>
+        </tr>
+        <tr>
+          <td>CRYB4ML</td>
+          <td>CN8CREN</td>
+          <td>IBM Tivoli Monitoring V6.3.0.6 Base, Unix, English </td>
+          <td>Tivoli Enterprise Monitoring Server, Tivoli Enterprise Portal Server, Tivoli Enterprise Portal Client, Tivoli Data Warehouse agents, and application support for base agents in English for UNIX operating systems </td>
+          
+        </tr>
+        <tr>
+          <td>CRYB4ML</td>
+          <td>CN8CSEN</td>
+          <td>IBM Tivoli Monitoring V6.3.0.6 Base, Linux (32 Bit Env.), English </td>
+          <td>Tivoli Enterprise Monitoring Server, Tivoli Enterprise Portal Server, Tivoli Enterprise Portal Client, Tivoli Data Warehouse agents, and application support for base agents in English for 32-bit Env. Linux operating systems </td>
+        </tr>
+        <tr>
+          <td>CRYB4ML</td>
+          <td>CN8CTEN</td>
+          <td>IBM Tivoli Monitoring V6.3.0.6 Base, Linux (64 Bit Env.), English </td>
+          <td>Tivoli Enterprise Monitoring Server, Tivoli Enterprise Portal Server, Tivoli Enterprise Portal Client, Tivoli Data Warehouse agents, and application support for base agents in English for 64-bit Env. Linux operating systems 
+          </td>
+        </tr>
+        <tr>
+          <td>CRYB4ML</td>
+          <td>CN8CUEN</td>
+          <td>IBM Tivoli Monitoring V6.3.0.6 Base, Linux on System z®, English</td>
+          <td>Tivoli Enterprise Monitoring Server, Tivoli Enterprise Portal Server, Tivoli Enterprise Portal Client, Tivoli Data Warehouse agents, and application support for base agents in English for Linux on System z operating systems
+          </td>
+        </tr>
+        <tr>
+          <td>CRYB4ML</td>
+          <td>CN8CVEN</td>
+          <td>IBM Tivoli Monitoring V6.3.0.6 Tools, Multiplatform, English </td>
+          <td>Tivoli Monitoring event synchronization component, Tivoli Enterprise Console® Event Definition Generator (TEDGEN) utility, and audit record DTDs
+          </td>
+        </tr>
+        <tr>
+          <td>CRYB4ML</td>
+          <td>CN8CWML</td>
+          <td>IBM Tivoli Monitoring V6.3.0.6 Language Support</td>
+          <td>Language pack for Tivoli Monitoring server components, warehouse agents, OS agents, agentless OS agents, Tivoli Performance Analyzer agent for all operating systems and languages
+          </td>
+        </tr><tr>
+          <td>CRYB4ML</td>
+          <td>CN8CXML</td>
+          <td>IBM Tivoli Performance Analyzer V6.3.0.6: Reports and Domain 
+			  Definitions Multiplatform, Multilingual </td>
+          <td>Performance Analyzer domains and BIRT reports
+          </td>
+        </tr>
+      </tbody>
+    </table> <br>
+
+	  <p>Tivoli Monitoring Agents and Agent Builder:</p>
+    <table style="border-width: 1px; width: 800px;" cellpadding="2" cellspacing="2">
+      <tbody>
+        <tr>
+          <th style="">Number of eAssembly to download<br>
+          </th>
+          <th style="width: 125px;">Number of part to download<br>
+          </th>
+          <th>Title on Passport Advantage<br>
+          </th>
+          <th>Contents<br>
+          </th>
+        </tr>
+        <tr>
+          <td>CRYB5ML</td>
+          <td>CN8CYML</td>
+          <td>IBM Tivoli Monitoring V6.3.0.6 Agents, Multiplatform, Multilingual</td>
+          <td>Operating system agents (IBM i, Linux, UNIX, Windows) and Agentless OS agents (AIX, HP-UX, Linux, Solaris, Windows)
+          </td>
+        </tr>
+        <tr>
+          <td>CRYB5ML</td>
+          <td>CN8CZML</td>
+          <td>IBM Tivoli Monitoring V6.3.0.6 Agent Reports</td>
+          <td>Operating system agent reports and reports installer</td>
+        </tr>
+        <tr>
+          <td>CRYB5ML</td>
+          <td>CN8GZML</td>
+          <td>IBM Tivoli Monitoring V6.3.2 Agent Builder Language Support </td>
+          <td>Language support files for Agent Builder</td>
+        </tr>
+        <tr>
+          <td>CRYB5ML</td>
+          <td>CN8HOEN</td>
+          <td>IBM Tivoli Monitoring V6.3.2 Agent Builder, English, Multiplatform</td>
+          <td>Agent Builder in English for multiple operating systems</td>
+        </tr>
+
+      </tbody>
+    </table>
+
+<br>
+    <!---------------------------------------------------------->
+    <!---   Prerequisites and corequisites                       --->                                 
+    <!---------------------------------------------------------->
+    <h2><a name="prereqs"></a>Prerequisites and corequisites</h2>
+    <p>For a complete set of prerequisites, refer to the "Hardware and software
+      requirements" section in the IBM Tivoli Monitoring Installation and Setup
+      Guide Version 6.3.0 Fix Pack 2 available at the following URL:<br>
+      <br>
+      <a href="http://www.ibm.com/support/knowledgecenter/SSTFXA_6.3.0.2/com.ibm.itm.doc_6.3fp2/install/itm_install.htm?lang=en">http://www.ibm.com/support/knowledgecenter/SSTFXA_6.3.0.2/com.ibm.itm.doc_6.3fp2/install/itm_install.htm?lang=en</a><br>
+    </p>
+    <p>A number of platforms previously supported by IBM Tivoli Monitoring
+      version 6.2.x are no longer supported by version 6.3.0 (and subsequent
+      6.3.0 fix packs). However these platforms will remain supported by version
+      6.2.x. agents connected to version 6.3.0 (or later) infrastructure. Also
+      for no longer supported server platforms, support will remain utilizing
+      version 6.2.x RTEMS connecting to version 6.3.0 (or later) HUB TEMS. See
+      the IBM Tivoli Monitoring coexistence and interoperability section of the
+      Installation and Setup Guide for detailed information. </p>
+    <p class="indent-level1"> Additional information: </p>
+    <p class="indent-level2"> The following Technote contains a table showing
+      platforms that are no longer supported by IBM Tivoli Monitoring version
+      6.3.0 (and subsequent 6.3.0 fix packs): <a href="http://www.ibm.com/support/docview.wss?uid=swg21623341">http://www.ibm.com/support/docview.wss?uid=swg21623341</a>.
+    </p>
+    <p> Further, IBM Tivoli Monitoring version 6.3.0 (and subsequent fix packs)
+      introduced a number of platform improvements which may require operating
+      system updates. It is important that you ensure your systems meet these
+      requirements prior to installing or updating your installation. </p>
+    <p class="indent-level1"> Additional information: </p>
+    <p class="indent-level2"> The following technote contains a table showing
+      these requirements: <a href="http://www.ibm.com/support/docview.wss?uid=swg21623341">http://www.ibm.com/support/docview.wss?uid=swg21623341</a>.
+    </p>
+    <h2><a name="issues"></a>Known issues</h2>
+    <p>The following issues have been found in a version of this release, either
+      in previous releases, or in this release. The symptom and the workaround
+      has been listed for each issue.<br>
+    </p>
+    <p><span style="font-weight: bold;"> The following issues are unique to this
+        fix pack.</span></p>
+    <p class="indent-level1">When installing the pristine installation, 
+		additional messages will be seen.</p>
+    <p class="indent-level1"><span style="text-decoration: underline;">Symptom:</span><br>
+This installation image contains the monitoring server or portal server.<br>
+The monitoring server and portal server will not start with separate installation and data directories.<br>
+If you want to install the monitoring server or portal server, you must use the installation directory for data.<br>
+If you want to install a different component, you may specify a different location for data.<br>
+Do you want to place data in the installation directory or specify a different location?<br>
+[ 1-Use installation directory, 2-Specify another directory; "1" is default ]<br>
+      &nbsp; </p>
+    <p class="indent-level2"><u>Additional information</u>:<br>
+      The new messages are a result of APAR IV67523 Move local data from CANDLEHOME to another file system:&nbsp; <a href="http://www-01.ibm.com/support/docview.wss?uid=swg21695194">http://www-01.ibm.com/support/docview.wss?uid=swg21695194</a>
+    </p><p><span style="font-weight: bold;"> The following issues affected the IBM
+        Tivoli Monitoring Monitoring 6.3.0 through 6.3.0 FP5 release and are still applicable to this fix pack. 
+	   </span></p>
+    <p class="indent-level1"><span style="text-decoration: underline;">Symptom:</span><br>
+      Java 7.0 not working in Internet Explorer. &nbsp; </p>
+    <p class="indent-level2"><u>Additional information</u>:<br>
+      One or more of the following tips may apply:&nbsp; <a href="http://www.java.com/en/download/help/ie_tips.xml">http://www.java.com/en/download/help/ie_tips.xml</a>
+    </p>
+    <br>
+    <br>
+    <!--
+<span style="font-weight: bold;"></span></p><p><span style="font-weight: bold;">The following issues affected the IBM Tivoli Monitoring 6.3.0 release and are still applicable to this fix pack.</span><br></p>-->
+    <span style="font-weight: bold;"><br>
+    </span>
+    <h2><a name="limitations"></a>Known limitations</h2>
+    <p><span style="font-weight: bold;"> The following limitations are unique to
+        this fix pack.</span> </p>
+    <p class="indent-level1">None.</p>
+    <p><span style="font-weight: bold;"> The following issues affected the IBM
+        Tivoli Monitoring Monitoring 6.3.0 through 6.3.0 FP5 release and are still applicable to this fix pack. 
+	   </span></p> <p class="indent-level1">Long path names in
+      6.3.0-TIV-ITM_TMV-Dashboards-Authorization_Policy-FP0002.zip</p>
+    <p class="indent-level2"> When expanding the
+      6.3.0-TIV-ITM_TMV-Dashboards-Authorization_Policy-FP0002.zip file on
+      Windows, users may encounter a "Path too long" error. This typically
+      occurs when the target extract location is located in a directory under
+      the user's home folder, such as "C:\Documents and
+      Settings\Administrator\My Documents". To resolve this issue, target the
+      extraction to a top level directory with a shorter path, such as
+      "C:\Temp". </p>
+    <span style="font-weight: bold;"><br>
+    </span> <br>
+    <h2>Installation information</h2>
+    <h3><a name="before_installing"></a> Prior to installation</h3>
+    <p>Before proceeding with the installation process, please make note of
+      these important points:<span class="editor-note"></span></p>
+    <ul>
+      <li>Once 6.3.0 FP5 or later has been installed on a management server, 
+		  older agents running IBM Tivoli Monitoring 6.21 or 6.20 shared 
+		  components will not be able to connect. If an agent is running with 
+		  IBM GSKit Security Interface 7.3.x.x or lower (component GS), it will 
+		  no longer be able to connect to a management server once 6.3.0 FP5 has 
+		  been installed, due to APAR IV68044. This is because the older GSKit 
+		  version only supports SSL and APAR IV68044 disables the use of SSL. 
+		  The IBM Tivoli Monitoring GSKit version needs to be at 7.4 or 
+		  later.<br> See the conclusion for APAR <a href="http://www.ibm.com/support/docview.wss?uid=swg1IV68044" target="_blank">IV68044</a> for steps to address.
+        <br>
+        <br>
+      </li><li>If LDAP is configured for authentication on the management servers 
+  and the Tivoli Directory Server is used as the LDAP server, then 6.3.0 FP5 or 
+  later requires an appropriate version of the Tivoli Directory Server and GSKit
+  version on the Directory Server. This is due to an uplift of the LDAP client 
+  due to APAR <a href="http://www.ibm.com/support/docview.wss?uid=swg1IV72812" target="_blank">IV72812</a>.   Please review the following technote before applying this 6.3.0 FP5 and later:<br>
+        <br>
+		  <a href="http://www.ibm.com/support/docview.wss?uid=swg21469388">http://www.ibm.com/support/docview.wss?uid=swg21469388</a>
+        <br>
+        <br>
+	</li>
+      <li> Customers upgrading a 32-bit 6.2.x based Tivoli Enterprise Portal
+        Server (TEPS) that is running on a 64-bit operating system may need to
+        manually upgrade IBM Installation Manager (IIM) before performing the
+        upgrade. The installation of the TEPS triggers an install or upgrade of
+        IIM to version 1.6.3.1. IIM 1.6.3.1 is a prerequisite for IBM HTTP
+        Server v8. The 32-bit IBM Tivoli Monitoring v6.3.0 Fix Pack 2 Media only
+        contains a 32-bit version of IBM Installation Manager, and therefore
+        cannot proceed with the upgrade of an existing 64-bit IBM Installation
+        Manager. Manually update the 64-bit IBM Installation Manager to version
+        1.6.3.1 (or later) prior to beginning the upgrade of IBM Tivoli
+        Monitoring v6.3.0 Fix Pack 2 or later.</li> <br>
+      <li> If you upgrade any OS agent to 6.3.0 Fix Pack 2 or later, you must
+        also separately upgrade tacmd (User Interface Extensions, product code
+        "ue") on the same machine to 6.3.0 Fix Pack 2 or later. If tacmd is not
+        upgraded, commands run from this machine will fail. </li> <br>
+      <li> If you are installing the 6.3.0 Fix Pack 2 or later version of server
+        dashboards into JazzSM's Dashboard Application Services Hub (DASH) or if
+        you are upgrading the server dashboards from 6.3.0 to 6.3.0 Fix Pack 2
+        or later, be aware that the WebSphere Application Server used by DASH
+        will be restarted during upgrade or installation of server dashboards.
+        Please plan accordingly. </li><br>
+      <li> If using the ITMSuper tool, it is recommended to run the tool before
+        installing the fix pack to create a baseline snapshot of the entire ITM
+        environment which can be used to compare against a second ITMSuper
+        snapshot collected after applying the fix pack. The baseline snapshot
+        can be done by selecting the Topology, Connectivity, and TEMS Servers
+        tabs and saving the session. Information about the ITMSuper tool can be
+        found at the following URL:<br>
+        <br>
+        <a href="http://www.ibm.com/software/brandcatalog/ismlibrary/details?catalog.label=1TW10TM6L">http://www.ibm.com/software/brandcatalog/ismlibrary/details?catalog.label=1TW10TM6L<br>
+          <br>
+        </a> </li>
+      <li>Some APAR fixes in this maintenance release may require you to take
+        manual steps in order to fully resolve the specific problem. Refer to
+        this Technote for information and guidelines: <br>
+        <br>
+        <a href="http://www.ibm.com/support/docview.wss?uid=swg21429029" target="_blank">http://www.ibm.com/support/docview.wss?uid=swg21429029</a><br>
+        <br>
+      </li>
+      <li>As a best practice, it is recommended that all running IBM Tivoli
+        Monitoring processes be stopped manually prior to performing an upgrade
+        from a previous version or maintenance level to this fix pack level.
+        While the upgrade installer will attempt to stop all running processes,
+        there are times when a running process will fail to stop and lead to
+        unexpected upgrade failures if the upgrade is allowed to continue. If
+        any process fails to stop during a manual shutdown, restart the system
+        before proceeding with the upgrade.<br>
+        <br>
+        To validate whether or not all of the ITM processes on the machine being
+        upgraded are stopped go to the following URL:<br>
+        <br>
+        http://<em>hostname</em>:1920<br>
+        <br>
+        where <em>hostname</em> is the host machine of the ITM processes being
+        upgraded. If a page appears with active links this means there are still
+        ITM processes active on that host, otherwise the host will not be found.
+      </li>
+      <br>
+      <br>
+      <li>Before a portal server upgrade, each respective directory requires the
+        following available space:<br>
+        <br>
+        <table style="width: 176px;">
+          <tbody>
+            <tr>
+              <td>$ITMHOME</td>
+              <td>1200 MB</td>
+            </tr>
+            <tr>
+              <td>/tmp/</td>
+              <td>800 MB</td>
+            </tr>
+          </tbody>
+        </table>
+        <br>
+      </li>
+      <li>Before upgrading, execute the cinfo/KinCInfo command per the
+        instructions in the section entitled <a href="https://delivery04.dhe.ibm.com/sdfdl/v2/sar/CM/TI/05uba/0/Xa.2/Xb.jusyLTSp44S0BnqOpc--yPaHuK4xI7y904mn__DN_8Tv0ych5oAm0U9XW2g/Xc.CM/TI/05uba/0/6.3.0-TIV-ITM-FP0006_README.html/Xd./Xf.LPR.D1vk/Xg.8501473/Xi.habanero/XY.habanero/XZ.nCrDfOkADA_Ci6VVctNTqFllbT8/6.3.0-TIV-ITM-FP0006_README.html#cinfo">Validating what
+          you installed</a>.&nbsp; After the install completes, this will help
+        in validating the installation.&nbsp; Once you complete the install,
+        continue with the next section entitled <a href="https://delivery04.dhe.ibm.com/sdfdl/v2/sar/CM/TI/05uba/0/Xa.2/Xb.jusyLTSp44S0BnqOpc--yPaHuK4xI7y904mn__DN_8Tv0ych5oAm0U9XW2g/Xc.CM/TI/05uba/0/6.3.0-TIV-ITM-FP0006_README.html/Xd./Xf.LPR.D1vk/Xg.8501473/Xi.habanero/XY.habanero/XZ.nCrDfOkADA_Ci6VVctNTqFllbT8/6.3.0-TIV-ITM-FP0006_README.html#after_installation">Performing
+          the necessary tasks after installation</a>.<br>
+        <br>
+      </li>
+      <li>The following information applies to users upgrading on UNIX or Linux
+        using a non-root userid for the management server and portal server.
+        These steps assume the itmuser userid and itmgrp group have been
+        created.<br>
+        <br>
+      </li>
+      <ol>
+        <li> Perform the management server and portal server upgrade while
+          signing on as user itmuser.</li>
+        <li> During the installation of gskit, enter the root password when
+          prompted.</li>
+        <li> After the installation completes, run "SetPerm -a" as user root.</li>
+        <li> Optionally, if management server security was enabled, run "SetPerm
+          -s" as user root to re-enable management server security.</li>
+        <li> Add application support to the hub management server.</li>
+        <li> Configure the portal server as user root (this step will run
+          InstallPresentation and add application support on the portal server).</li>
+        <li> Execute the following command as user root to change the ownership
+          of all files in $CANDLEHOME to user itmuser and group itmgrp: <br>
+          <br>
+          chown -Rf itmuser:itmgrp $CANDLEHOME<br>
+          <br>
+        </li>
+        <li> Run "SetPerm -a" as root user again.</li>
+        <li> Optionally, if management server security was enabled, run "SetPerm
+          -s" as user root to re-enable management server security.</li>
+        <li>Start the hub management server and portal server as user itmuser.<br>
+          <br>
+        </li>
+      </ol>
+      <li>The following information applies to users upgrading on Windows
+        systems.<br>
+        <br>
+        Ensure you are logged on locally to the Windows machine with a userid
+        that has administrator rights.</li>
+      <br>
+      <br>
+      <li>The following are recommended steps to facilitate recovery of the
+        Tivoli Enterprise Management Server (TEMS) or the Tivoli Enterprise
+        Portal Server (TEPS) in the case where problems are encountered during
+        the installation of this fix pack.
+        <h4>Management Server</h4>
+        <ol>
+          <li>
+            <p>Run the pdcollect utility to gather all of the current logs and
+              environment files. These backups can be used for reference, if
+              needed, after the upgrade. The "tacmd pdcollect -help" command can
+              be issued to obtain the syntax for the pdcollect utility.</p>
+          </li>
+          <li>
+            <p>If using the ITMSuper tool, run the tool to take a snapshot of
+              the entire ITM infrastructure prior to the install of this fix
+              pack. <br>
+            </p>
+          </li>
+        </ol>
+        <h4>Portal Server</h4>
+        <ol>
+          <li>
+            <p>Run the migrate-export.bat (Windows) or migrate-export.sh
+              (UNIX/Linux) to backup the contents of the portal server database.
+              This snapshot will allow for recovery of the database back to the
+              point prior to installing this fix pack maintenance. </p>
+          </li>
+          <li>
+            <p>Run the pdcollect utility to gather all of the current logs and
+              environment files. These backups can be used for reference, if
+              needed, after the upgrade. The "tacmd pdcollect -help" command can
+              be issued to obtain the syntax for the pdcollect utility.</p>
+          </li>
+          <li>
+            <p>If using the ITMSuper tool, run the tool to take a snapshot of
+              the entire ITM infrastructure prior to the install of this fix
+              pack. </p>
+          </li>
+        </ol>
+      </li>
+      <li><a name="rhel7info"></a><span style="font-weight: bold;">Red Hat
+          Enterprise Linux Server 7.0 support.</span>
+        <br>
+Note: There is an issue with the compat-libstdc++-33-3.2.3-71.el7 version that 
+currently ships with Red Hat Enterprise Linux Server 7.0 that affects agents on 
+platforms pSeries and zSeries and some 32 bit agents on x86_64. Red Hat 
+provided a fix in Red Hat 7.1 but for Red Hat 7.0 the compat-libstdc++-33.xxx 
+libraries from Red Hat Enterprise Linux Server 6.4 or later should be 
+used.</li><br> 
+      <li><a name="sles12info"><span style="font-weight: bold;">SUSE Linux Enterprise
+            12 support.</span></a> 
+        <br>
+        Support for IBM Tivoli Monitoring Version 6.3.0 is limited to x86_64 and zSeries Linux only.<br>
+        &nbsp;</li>
+    </ul>
+    <h3><a name="installing"></a> Installing</h3>
+    For step-by-step installation and setup instructions, see the Installation
+    and Setup Guide for IBM Tivoli Monitoring 6.3.0 Fix Pack 2 which can be
+    accessed using the following URL:<br>
+    <br>
+    <a href="http://www.ibm.com/support/knowledgecenter/SSTFXA_6.3.0.2//com.ibm.itm.doc_6.3fp2/install/itm_install.htm">http://www.ibm.com/support/knowledgecenter/SSTFXA_6.3.0.2//com.ibm.itm.doc_6.3fp2/install/itm_install.htm</a>
+    <br>
+    <h4><br>
+    </h4>
+    <h3><a name="after_installation"></a> Performing the necessary tasks after
+      installation</h3>
+    <p>If using the ITMSuper tool, it is recommended to run the tool after
+      applying the fix pack to create snapshot of the entire ITM environment
+      that can be compared to the baseline snapshot taken with ITMSuper before
+      the installation. The baseline snapshot can be done by selecting the
+      Topology, Connectivity, and TEMS Servers tabs and saving the session.
+      Information about the ITMSuper tool can be found at the following URL:</p>
+    <a href="http://www.ibm.com/software/brandcatalog/ismlibrary/details?catalog.label=1TW10TM6L">http://www.ibm.com/software/brandcatalog/ismlibrary/details?catalog.label=1TW10TM6L</a>
+    <h4><a name="cinfo"></a>Validating what you installed</h4>
+    <p>You can validate your installation by running the KinCInfo command on
+      Windows systems or the cinfo command on Linux or UNIX systems. If you run
+      these commands before and after your upgrade, you can clearly see the
+      component versions that have changed.<br>
+      <br>
+      For interim fixes, only components that have been updated during this
+      release have the latest listed level. If a component has not been updated,
+      the package will contain the most recent GA copy. There is no need to
+      upgrade this component if your system is at the listed level, the install
+      programs should automatically handle this for you.<br>
+      <br>
+      Note: The KinCInfo and cinfo command output examples in the sections that
+      follow show all components that can be updated. If you do not have all of
+      these components installed, then components not installed will not be
+      displayed in the output of these commands.<br>
+      <br>
+      Note: The "Monitoring agent for UNIX Logs" agent name has been deprecated.
+      Going forward, this agent will be named "UNIX Logs" agent.<br> <br>
+    </p>
+    <h4>Sample output for the KinCInfo command on Windows systems</h4>
+	The following example shows the output of the KinCInfo -t command on a management server. 
+    (<a href="javascript:;" onmousedown="toggleDiv(&#39;winmgtsrvsample&#39;);">Click
+      to show/hide</a>)<br>
+    <div id="winmgtsrvsample" class="hidden-sample" style="display: none;">
+      <pre>C:\IBM\ITM\InstallITM&gt;KinCInfo -t
+
+*********** Monday, December 7, 2015 11:31:36 AM ************
+User       : Administrator         Group     : NA
+Host Name  : system1               Installer : Ver: 063006000
+CandleHome : C:\IBM\ITM
+Installitm : C:\IBM\ITM\InstallITM
+*************************************************************
+...Product Inventory
+
+PC  PRODUCT DESC                                             PLAT   VER          BUILD         INSTALL DATE
+
+CJ  TEPD App Support/Tivoli Enterprise Portal Desktop Clien  WINNT  06.30.06.00  d5334a        20151202 1515
+GL  KGL(32-bit) CMA/Tivoli Enterprise Monitoring Agent Fram  WINNT  06.30.06.00  d5334a        20151202 1515
+MS  TEMS App Support/Tivoli Enterprise Monitoring Server     WINNT  06.30.06.00  d5334a        20151202 1515
+NT  KNT(32-bit) CMA/Monitoring Agent for Windows OS          WINNT  06.30.06.00  53011         20151202 1515
+UE  KUE(32-bit) CMA/Tivoli Enterprise Services User Interfa  WINNT  06.30.06.00  d5334a        20151202 1515
+
+PC  APPLICATION SUPPORT DESC                                 PLAT   APP VER      BUILD         INSTALL DATE
+
+IN  Install INS/Windows Install Component                    WINNT  06.30.06.00  201511302132  20151202 1515
+IN  TEPD INS/TEP Desktop Windows Install Component           WINNT  06.30.06.00  201511302132  20151202 1515
+IN  TEMS INS/TEMS Windows Install Component                  WINNT  06.30.06.00  201511302132  20151202 1515
+IN  TEMA(32-bit) INS/ITM 6.x Agent Install Component         WINNT  06.30.06.00  201511302132  20151202 1515
+A4  TEMS App Support/Monitoring Agent for i5/OS              WICMS  06.30.06.00  53341         20151202 1515
+A4  TEPD App Support/Monitoring Agent for i5/OS              WIXEW  06.30.06.00  53341         20151202 1515
+GS  KGS(32-bit) GSK/IBM GSKit Security Interface             WINNT  08.00.50.36  d5313a        20151202 1515
+HD  TEMS App Support/Warehouse Proxy                         WICMS  06.30.06.00  d5334a        20151202 1515
+HD  TEPD App Support/Warehouse Proxy                         WIXEW  06.30.06.00  d5334a        20151202 1515
+IT  TEPD App Support/TEC GUI Integration                     WIXEW  06.30.06.00  d5313a        20151202 1515
+JM  KJM(32-bit) JVM/Embedded JVM                             WINNT  07.09.01.00  201506221629  20151202 1515
+LZ  TEMS App Support/Monitoring Agent for Linux OS           WICMS  06.30.06.00  53181         20151202 1515
+LZ  TEPD App Support/Monitoring Agent for Linux OS           WIXEW  06.30.06.00  53181         20151202 1515
+NT  TEMS App Support/Monitoring Agent for Windows OS         WICMS  06.30.06.00  53011         20151202 1515
+NT  TEPD App Support/Monitoring Agent for Windows OS         WIXEW  06.30.06.00  53011         20151202 1515
+PA  TEPD App Support/Tivoli Performance Analyzer             WIXEW  06.30.06.00  53061         20151202 1515
+R2  TEMS App Support/Agentless Monitoring for Windows Opera  WICMS  06.30.06.00  201511131433  20151202 1515
+R2  TEPD App Support/Agentless Monitoring for Windows Opera  WIXEW  06.30.06.00  201511131433  20151202 1515
+R3  TEMS App Support/Agentless Monitoring for AIX Operating  WICMS  06.30.06.00  201511131435  20151202 1515
+R3  TEPD App Support/Agentless Monitoring for AIX Operating  WIXEW  06.30.06.00  201511131435  20151202 1515
+R4  TEMS App Support/Agentless Monitoring for Linux Operati  WICMS  06.30.06.00  201511131436  20151202 1515
+R4  TEPD App Support/Agentless Monitoring for Linux Operati  WIXEW  06.30.06.00  201511131436  20151202 1515
+R5  TEMS App Support/Agentless Monitoring for HP-UX Operati  WICMS  06.30.06.00  201511131439  20151202 1515
+R5  TEPD App Support/Agentless Monitoring for HP-UX Operati  WIXEW  06.30.06.00  201511131439  20151202 1515
+R6  TEMS App Support/Agentless Monitoring for Solaris Opera  WICMS  06.30.06.00  201511131441  20151202 1515
+R6  TEPD App Support/Agentless Monitoring for Solaris Opera  WIXEW  06.30.06.00  201511131441  20151202 1515
+SY  TEMS App Support/Summarization and Pruning Agent         WICMS  06.30.06.00  d5325a        20151202 1515
+SY  TEPD App Support/Summarization and Pruning Agent         WIXEW  06.30.06.00  d5325a        20151202 1515
+T1  TEMS App Support/Tivoli Enterprise Monitoring Server TR  WICMS  07.30.63.00  d5334a        20151202 1515
+TM  TEMS App Support/IBM Tivoli Monitoring 5.x Endpoint Sup  WICMS  06.23.05.00  d4029a        20151202 1515
+UI  KUI(32-bit) CLI/Tivoli Enterprise Services User Interfa  WINNT  06.30.06.00  201511302132  20151202 1515
+UL  TEMS App Support/Monitoring Agent for UNIX Logs          WICMS  06.23.05.00  53221         20151202 1515
+UL  TEPD App Support/Monitoring Agent for UNIX Logs          WIXEW  06.23.05.00  53221         20151202 1515
+UM  TEMS App Support/Universal Agent                         WICMS  06.23.05.00  d5326a        20151202 1515
+UM  TEPD App Support/Universal Agent                         WIXEW  06.23.05.00  d5326a        20151202 1515
+UX  TEMS App Support/Monitoring Agent for UNIX OS            WICMS  06.30.06.00  53011         20151202 1515
+UX  TEPD App Support/Monitoring Agent for UNIX OS            WIXEW  06.30.06.00  53011         20151202 1515
+
+    </pre>
+      <br>
+    </div>
+    <br>
+    The following example shows the output of the KinCInfo -t command on a
+    portal server. (<a href="javascript:;" onmousedown="toggleDiv(&#39;winportalsrvsample&#39;);">Click
+      to show/hide</a>)<br>
+    <div id="winportalsrvsample" class="hidden-sample" style="display: none;">
+      <pre>C:\IBM\ITM\InstallITM&gt;KinCInfo -t
+
+*********** Tuesday, December 8, 2015 12:01:21 PM ***********
+User       : Administrator         Group     : NA
+Host Name  : system1               Installer : Ver: 063006000
+CandleHome : C:\IBM\ITM
+Installitm : C:\IBM\ITM\InstallITM
+*************************************************************
+...Product Inventory
+
+PC  PRODUCT DESC                                                              PLAT             VER                BUILD                 INSTALL DATE
+
+AC  KAC(64-bit) CMA/32/64 Bit Agent Compatibility Package    WIX64          06.30.06.00    201511302132           20151208 1055
+CQ  KCQ(64-bit) CMA/Tivoli Enterprise Portal Server Agent    WIX64  06.30.06.00  d5334a        20151208 1055
+CQ  TEPS App Support/Tivoli Enterprise Portal Server         WIX64  06.30.06.00  d5334a        20151208 1055
+CW  TEPB App Support/Tivoli Enterprise Portal Browser Clien  WINNT  06.30.06.00  d5334a        20151208 1055
+GL  KGL(64-bit) CMA/Tivoli Enterprise Monitoring Agent Fram  WIX64  06.30.06.00  d5334a        20151208 1055
+GL  KGL(32-bit) CMA/Tivoli Enterprise Monitoring Agent Fram  WINNT  06.30.06.00  d5334a        20151208 1055
+KF  KKF(32-bit) IEH/IBM Eclipse Help Server                  WINNT  06.30.06.00  d5313a        20151208 1055
+UE  KUE(32-bit) CMA/Tivoli Enterprise Services User Interfa  WINNT  06.30.06.00  d5334a        20151208 1055
+
+PC  APPLICATION SUPPORT DESC                                 PLAT   APP VER      BUILD         INSTALL DATE
+
+IN  Install INS/Windows Install Component                    WINNT  06.30.06.00  201511302132  20151208 1055
+IN  TEPS INS/TEP Server Windows Install Component            WINNT  06.30.06.00  201511302132  20151208 1055
+IN  TEMA(32-bit) INS/ITM 6.x Agent Install Component         WINNT  06.30.06.00  201511302132  20151208 1055
+IN  TEMA(64-bit) INS/ITM 6.x Agent Install Component Extens  WINNT  06.30.06.00  201511302132  20151208 1055
+A4  TEPS App Support/Monitoring Agent for i5/OS              WICNS  06.30.06.00  53341         20151208 1055
+A4  TEPB App Support/Monitoring Agent for i5/OS              WIXEB  06.30.06.00  53341         20151208 1055
+GS  KGS(64-bit) GSK/IBM GSKit Security Interface             WIX64  08.00.50.36  d5313a        20151208 1055
+GS  KGS(32-bit) GSK/IBM GSKit Security Interface             WINNT  08.00.50.36  d5313a        20151208 1055
+HD  TEPS App Support/Warehouse Proxy                         WICNS  06.30.06.00  d5334a        20151208 1055
+HD  TEPB App Support/Warehouse Proxy                         WIXEB  06.30.06.00  d5334a        20151208 1055
+II  TEPS App Support/IBM Installation Manager                WICNS  01.06.03.01  d5313a        20151208 1055
+IT  TEPS App Support/TEC GUI Integration                     WICNS  06.30.06.00  d5313a        20151208 1055
+IT  TEPB App Support/TEC GUI Integration                     WIXEB  06.30.06.00  d5313a        20151208 1055
+IU  TEPS App Support/IBM HTTP Server                         WICNS  08.00.06.00  d5313a        20151208 1055
+IW  TEPS App Support/Tivoli Enterprise Portal Server Extens  WICNS  08.00.06.00  d5313a        20151208 1055
+JM  KJM(64-bit) JVM/Embedded JVM                             WIX64  07.09.01.00  201506221629  20151208 1055
+JM  KJM(32-bit) JVM/Embedded JVM                             WINNT  07.09.01.00  201506221629  20151208 1055
+JM  TEPB App Support/Embedded JVM - TEP Browser Client       WIXEB  07.09.10.10  201510161325  20151208 1055
+LZ  TEPS App Support/Monitoring Agent for Linux OS           WICNS  06.30.06.00  53181         20151208 1055
+LZ  TEPB App Support/Monitoring Agent for Linux OS           WIXEB  06.30.06.00  53181         20151208 1055
+NT  TEPS App Support/Monitoring Agent for Windows OS         WICNS  06.30.06.00  53011         20151208 1055
+NT  TEPB App Support/Monitoring Agent for Windows OS         WIXEB  06.30.06.00  53011         20151208 1055
+PA  TEPS App Support/Tivoli Performance Analyzer             WICNS  06.30.06.00  53061         20151208 1055
+PA  TEPB App Support/Tivoli Performance Analyzer             WIXEB  06.30.06.00  53061         20151208 1055
+R2  TEPS App Support/Agentless Monitoring for Windows Opera  WICNS  06.30.06.00  201511131433  20151208 1055
+R2  TEPB App Support/Agentless Monitoring for Windows Opera  WIXEB  06.30.06.00  201511131433  20151208 1055
+R3  TEPS App Support/Agentless Monitoring for AIX Operating  WICNS  06.30.06.00  201511131435  20151208 1055
+R3  TEPB App Support/Agentless Monitoring for AIX Operating  WIXEB  06.30.06.00  201511131435  20151208 1055
+R4  TEPS App Support/Agentless Monitoring for Linux Operati  WICNS  06.30.06.00  201511131436  20151208 1055
+R4  TEPB App Support/Agentless Monitoring for Linux Operati  WIXEB  06.30.06.00  201511131436  20151208 1055
+R5  TEPS App Support/Agentless Monitoring for HP-UX Operati  WICNS  06.30.06.00  201511131439  20151208 1055
+R5  TEPB App Support/Agentless Monitoring for HP-UX Operati  WIXEB  06.30.06.00  201511131439  20151208 1055
+R6  TEPS App Support/Agentless Monitoring for Solaris Opera  WICNS  06.30.06.00  201511131441  20151208 1055
+R6  TEPB App Support/Agentless Monitoring for Solaris Opera  WIXEB  06.30.06.00  201511131441  20151208 1055
+SY  TEPS App Support/Summarization and Pruning Agent         WICNS  06.30.06.00  d5325a        20151208 1055
+SY  TEPB App Support/Summarization and Pruning Agent         WIXEB  06.30.06.00  d5325a        20151208 1055
+TM  TEPS App Support/IBM Tivoli Monitoring 5.x Endpoint Sup  WICNS  06.23.05.00  d4029a        20151208 1055
+UI  KUI(32-bit) CLI/Tivoli Enterprise Services User Interfa  WINNT  06.30.06.00  201511302132  20151208 1055
+UL  TEPS App Support/Monitoring Agent for UNIX Logs          WICNS  06.23.05.00  53221         20151208 1055
+UL  TEPB App Support/Monitoring Agent for UNIX Logs          WIXEB  06.23.05.00  53221         20151208 1055
+UM  TEPS App Support/Universal Agent                         WICNS  06.23.05.00  d5326a        20151208 1055
+UM  TEPB App Support/Universal Agent                         WIXEB  06.23.05.00  d5326a        20151208 1055
+UX  TEPS App Support/Monitoring Agent for UNIX OS            WICNS  06.30.06.00  53011         20151208 1055
+UX  TEPB App Support/Monitoring Agent for UNIX OS            WIXEB  06.30.06.00  53011         20151208 1055
+
+</pre> <br>
+    </div>
+    <br>
+    <h4>Sample output for the cinfo command on UNIX or Linux systems</h4>
+    The following example shows the output of the cinfo -t command on a hub
+    management server on Linux: (<a href="javascript:;" onmousedown="toggleDiv(&#39;unixmgtsrvsample&#39;);">Click
+      to show/hide</a>)<br>
+    <div id="unixmgtsrvsample" class="hidden-sample" style="display: none;">
+      <pre># $CANDLEHOME/bin/cinfo -t
+
+*********** Mon Dec  7 11:29:54 CST 2015 ******************
+User: root Groups: root sfcb
+Host name : system1     Installer Lvl:06.30.06.00
+CandleHome: /data/itm
+Version Format: VV.RM.FF.II (V: Version; R: Release; M: Modification; F: Fix; I: Interim Fix)
+***********************************************************
+...Product inventory
+
+PC   PRODUCT DESC                                              PLAT    VER           BUILD           INSTALL DATE
+
+ax   IBM Tivoli Monitoring Shared Libraries                    li6263  06.30.06.00   d5334a          20151202 1518
+gs   IBM GSKit Security Interface                              li6243  08.00.50.36   d5313a          -
+jr   Tivoli Enterprise-supplied JRE                            li6263  07.09.01.00   201506221629    -
+lz   Monitoring Agent for Linux OS                             li6263  06.30.06.00   53181           20151202 1518
+ms   Tivoli Enterprise Monitoring Server                       li6263  06.30.06.00   d5334a          20151202 1518
+sh   Tivoli Enterprise Monitoring SOAP Server                  li6263  06.30.06.00   d5334a          20151202 1518
+t1   File Transfer Enablement                                  li6263  07.30.00.00   20100000-0000   -
+ue   Tivoli Enterprise Services User Interface Extensions      li6263  06.30.06.00   d5334a          20151202 1518
+ui   Tivoli Enterprise Services User Interface                 li6263  06.30.06.00   d5334a          20151202 1518
+
+
+PC   APPLICATION SUPPORT DESC                                  PLAT    APP VER       BUILD           INSTALL DATE
+
+a4   Monitoring Agent for i5/OS                                tms     06.30.06.00   53341           20151202 1518
+hd   Warehouse Proxy                                           tms     06.30.06.00   d5334a          20151202 1518
+lz   Monitoring Agent for Linux OS                             tms     06.30.06.00   53181           20151202 1518
+ms   Tivoli Enterprise Monitoring Server                       tms     06.30.06.00   d5334a          20151202 1518
+nt   Monitoring Agent for Windows OS                           tms     06.30.06.00   53011           20151202 1519
+pa   Tivoli Performance Analyzer                               tms     06.30.06.00   53061           20151202 1518
+r2   Agentless Monitoring for Windows Operating Systems        tms     06.30.06.00   201511131433    20151202 1518
+r3   Agentless Monitoring for AIX Operating Systems            tms     06.30.06.00   201511131435    20151202 1518
+r4   Agentless Monitoring for Linux Operating Systems          tms     06.30.06.00   201511131436    20151202 1519
+r5   Agentless Monitoring for HP-UX Operating Systems          tms     06.30.06.00   201511131439    20151202 1518
+r6   Agentless Monitoring for Solaris Operating Systems        tms     06.30.06.00   201511131441    20151202 1518
+sy   Summarization and Pruning Agent                           tms     06.30.06.00   d5325a          20151202 1518
+tm   Monitoring Agent for IBM Tivoli Monitoring 5.x Endpoint   tms     06.23.05.00   d4029a          20151202 1518
+ul   Monitoring Agent for UNIX Logs                            tms     06.23.05.00   53221           20151202 1518
+um   Universal Agent                                           tms     06.23.05.00   d5326a          20151202 1518
+ux   Monitoring Agent for UNIX OS                              tms     06.30.06.00   53011           20151202 1518
+
+
+</pre> <br>
+    </div>
+    <br>
+    The following example shows the output of the cinfo -t command on a portal
+    server on Linux: (<a href="javascript:;" onmousedown="toggleDiv(&#39;unixportalsrvsample&#39;);">Click
+      to show/hide</a>)<br>
+    <div id="unixportalsrvsample" class="hidden-sample" style="display: none;">
+      <pre># $CANDLEHOME/bin/cinfo -t
+*********** Mon Dec  7 12:27:48 EST 2015 ******************
+User: root Groups: root bin daemon sys adm disk wheel pkcs11
+Host name : system1      Installer Lvl:06.30.06.00
+CandleHome: /products/IBM/ITM
+Version Format: VV.RM.FF.II (V: Version; R: Release; M: Modification; F: Fix; I: Interim Fix)
+***********************************************************
+...Product inventory
+
+PC   PRODUCT DESC                                              PLAT    VER           BUILD           INSTALL DATE
+
+ax   IBM Tivoli Monitoring Shared Libraries                    ls3266  06.30.06.00   d5334a          20151202 1617
+cq   Tivoli Enterprise Portal Server                           ls3266  06.30.06.00   d5334a          20151202 1618
+cw   Tivoli Enterprise Portal Browser Client                   ls3266  06.30.06.00   d5334a          20151202 1617
+gs   IBM GSKit Security Interface                              ls3266  08.00.50.36   d5313a          -        
+hd   Warehouse Proxy                                           ls3266  06.30.06.00   d5334a          20151202 1617
+ii   IBM Installation Manager                                  ls3263  01.06.03.01   d5313a          20151202 1617
+iu   IBM HTTP Server                                           ls3266  08.00.06.00   d5313a          20151202 1617
+iw   IBM Tivoli Enterprise Portal Server Extensions            ls3266  08.00.06.00   d5313a          20151202 1617
+jr   Tivoli Enterprise-supplied JRE                            ls3266  07.09.01.00   201506221629    -        
+kf   IBM Eclipse Help Server                                   ls3263  06.30.06.00   d5313a          20151202 1617
+lz   Monitoring Agent for Linux OS                             ls3266  06.30.06.00   53181           20151202 1623
+sy   Summarization and Pruning Agent                           ls3266  06.30.06.00   d5325a          20151202 1617
+ue   Tivoli Enterprise Services User Interface Extensions      ls3266  06.30.06.00   d5334a          20151202 1617
+ui   Tivoli Enterprise Services User Interface                 ls3266  06.30.06.00   d5334a          20151202 1617
+
+
+PC   APPLICATION SUPPORT DESC                                  PLAT    APP VER       BUILD           INSTALL DATE
+
+a4   Monitoring Agent for i5/OS                                tps     06.30.06.00   53341           20151202 1624
+a4   Monitoring Agent for i5/OS                                tpw     06.30.06.00   53341           20151202 1626
+hd   Warehouse Proxy                                           tps     06.30.06.00   d5334a          20151202 1624
+hd   Warehouse Proxy                                           tpw     06.30.06.00   d5334a          20151202 1625
+it   TEC GUI Integration                                       tps     06.30.06.00   d5313a          20151202 1624
+it   TEC GUI Integration                                       tpw     06.30.06.00   d5313a          20151202 1625
+jr   Tivoli Enterprise-supplied JRE                            tpj     07.09.10.10   201510161325    -        
+lz   Monitoring Agent for Linux OS                             tps     06.30.06.00   53181           20151202 1624
+lz   Monitoring Agent for Linux OS                             tpw     06.30.06.00   53181           20151202 1625
+nt   Monitoring Agent for Windows OS                           tps     06.30.06.00   53011           20151202 1624
+nt   Monitoring Agent for Windows OS                           tpw     06.30.06.00   53011           20151202 1625
+pa   Tivoli Performance Analyzer                               tps     06.30.06.00   53061           20151202 1624
+pa   Tivoli Performance Analyzer                               tpw     06.30.06.00   53061           20151202 1625
+r2   Agentless Monitoring for Windows Operating Systems        tps     06.30.06.00   201511131433    20151202 1624
+r2   Agentless Monitoring for Windows Operating Systems        tpw     06.30.06.00   201511131433    20151202 1625
+r3   Agentless Monitoring for AIX Operating Systems            tps     06.30.06.00   201511131435    20151202 1624
+r3   Agentless Monitoring for AIX Operating Systems            tpw     06.30.06.00   201511131435    20151202 1625
+r4   Agentless Monitoring for Linux Operating Systems          tps     06.30.06.00   201511131436    20151202 1624
+r4   Agentless Monitoring for Linux Operating Systems          tpw     06.30.06.00   201511131436    20151202 1625
+r5   Agentless Monitoring for HP-UX Operating Systems          tps     06.30.06.00   201511131439    20151202 1624
+r5   Agentless Monitoring for HP-UX Operating Systems          tpw     06.30.06.00   201511131439    20151202 1625
+r6   Agentless Monitoring for Solaris Operating Systems        tps     06.30.06.00   201511131441    20151202 1624
+r6   Agentless Monitoring for Solaris Operating Systems        tpw     06.30.06.00   201511131441    20151202 1625
+sy   Summarization and Pruning Agent                           tps     06.30.06.00   d5325a          20151202 1624
+sy   Summarization and Pruning Agent                           tpw     06.30.06.00   d5325a          20151202 1626
+tm   Monitoring Agent for IBM Tivoli Monitoring 5.x Endpoint   tps     06.23.05.00   d4029a          20151202 1624
+ul   Monitoring Agent for UNIX Logs                            tps     06.23.05.00   53221           20151202 1624
+ul   Monitoring Agent for UNIX Logs                            tpw     06.23.05.00   53221           20151202 1625
+um   Universal Agent                                           tps     06.23.05.00   d5326a          20151202 1624
+um   Universal Agent                                           tpw     06.23.05.00   d5326a          20151202 1625
+ux   Monitoring Agent for UNIX OS                              tps     06.30.06.00   53011           20151202 1624
+ux   Monitoring Agent for UNIX OS                              tpw     06.30.06.00   53011           20151202 1625
+
+Note: if the output displays the "iw" product code, the product code "iv" may or may not be listed depending on the upgrade scenario:
+iv  Tivoli Enterprise Portal Server Extensions Update
+iw  Tivoli Enterprise Portal Server Extensions
+</pre> <br>
+    </div>
+    <h4>Installation instructions for agent baroc files</h4>
+    <br>
+    <p>When applying IBM Tivoli Monitoring maintenance updates it is necessary
+      to know if the corresponding baroc definition contained in the maintenance
+      needs to be applied to the event integration server such as a Tivoli
+      Enterprise Console Server or Netcool/OMNIbus Probe for Tivoli Event
+      Integration Facility (EIF). </p>
+    <p> This fix pack contains baroc files at the level documented in the list
+      below. If you have an earlier level installed you will need to reinstall
+      them. </p>
+    <table width="400">
+      <tbody>
+        <tr>
+          <th colspan="3" scope="col">IBM Tivoli Monitoring Infrastructure</th>
+        </tr>
+        <tr>
+          <td>Operations and Audit Log</td>
+          <td>kib.baroc</td>
+          <td>06.30.02.00</td>
+        </tr>
+        <tr>
+          <td>Remote Deploy</td>
+          <td>kdy.baroc</td>
+          <td>06.21.00.00</td>
+        </tr>
+        <tr>
+          <th colspan="3" scope="col">IBM Tivoli Monitoring Data Warehouse
+            Agents</th>
+        </tr>
+        <tr>
+          <td>Warehouse Proxy</td>
+          <td>khd.baroc</td>
+          <td>06.30.00.00</td>
+        </tr>
+        <tr>
+          <td>Summarization and Pruning</td>
+          <td>ksy.baroc</td>
+          <td>06.30.02.00</td> </tr>
+        <tr>
+          <th colspan="3">IBM Tivoli Monitoring 6.x for OS Agents</th>
+        </tr>
+        <tr>
+          <td>Windows</td>
+          <td>knt.baroc</td>
+          <td>06.30.05.00</td>
+        </tr>
+        <tr>
+          <td>UNIX</td>
+          <td>kux.baroc</td>
+          <td>06.30.05.00</td>
+        </tr>
+        <tr>
+          <td>Linux</td>
+          <td>klz.baroc</td>
+          <td>06.30.06.00</td>
+        </tr>
+        <tr>
+          <td>i5/OS</td>
+          <td>ka4.baroc</td>
+          <td>06.30.02.00</td>
+        </tr>
+        <tr>
+          <th colspan="3">IBM Tivoli Monitoring 6.x for Agentless OS Agents</th>
+        </tr>
+        <tr>
+          <td>Windows</td>
+          <td>kr2.baroc</td>
+          <td>06.30.06.00</td>
+        </tr>
+        <tr>
+          <td>AIX</td>
+          <td>kr3.baroc</td>
+          <td>06.30.03.00</td>
+        </tr>
+        <tr>
+          <td>Linux</td>
+          <td>kr4.baroc</td>
+          <td>06.30.06.00</td>
+        </tr>
+        <tr>
+          <td>HP</td>
+          <td>kr5.baroc</td>
+          <td>06.30.03.00</td>
+        </tr>
+        <tr>
+          <td>Solaris</td>
+          <td>kr6.baroc</td>
+          <td>06.30.06.00</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>&nbsp;</p>
+
+    <h3 style="font-weight: bold;"><a name="security_updates">Post 
+		installation security updates</a></h3>
+	  <p>Recent security updates have been included in this Fix Pack 
+		  including APARs IV74486 and IV77408. In addition to these, additional 
+		  updates for the Tivoli Enterprise Portal and Tivoli Enterprise Portal 
+		  Server (TEPS) need to be done to complete the remediation for the CVEs 
+	  published at the time of the Fix Pack being released.  See the technote
+	  below for more details.<br></p>
+<p><a href="http://www.ibm.com/support/docview.wss?uid=swg21960130" target="_blank">http://www.ibm.com/support/docview.wss?uid=swg21960130</a>
+</p>
+	<br>
+    <h3 style="font-weight: bold;"><a name="troubleshoot">Troubleshoot
+        Installation from Support site</a></h3>
+    <p>For additional troubleshooting help not covered in this README document,
+      please visit the IBM Tivoli Monitoring support page at the following URL:<br>
+    </p>
+    <p><a href="http://www.ibm.com/support/entry/portal/Overview/Software/Tivoli/Tivoli_Monitoring_V6" target="_blank">http://www.ibm.com/support/entry/portal/Overview/Software/Tivoli/Tivoli_Monitoring_V6</a></p>
+    <p><br>
+    </p>
+    <h2><a name="LPinstalling"></a>Language Pack Installation information</h2>
+    <!--<p>There is no new language pack for IBM Tivoli Monitoring 6.3.0 Fix Pack 3. </p>-->
+    <!-- p class="indent-level1"> The latest language pack for IBM Tivoli 
+		Monitoring 6.3.0 is for Fix Pack 5. </p -->
+    <p class="indent-level1"> The language pack has been refreshed for IBM 
+		Tivoli Monitoring 6.3.0 Fix Pack 6. </p>
+    <p class="indent-level1"> <b>Installing a language pack on a Windows
+        system</b> </p>
+    <p class="indent-level2"> To install a language pack, first make sure that
+      you have already installed the product in English, then perform the
+      following steps: </p>
+    <ol class="indent-level2">
+      <li>Double-click lpinstaller.bat in the language pack CD to launch the
+        installation program.</li>
+      <li>Select the language of the installer and click OK.</li>
+      <li>Click Next on the Introduction panel.</li>
+      <li>Click Add/Update and click Next.</li>
+      <li>Select the folder in which the Language Pack you wish to install are
+        located.</li>
+      <li>Select the languages that you want to install and click Next.
+        <blockquote><b>Note</b>: You can hold down the Ctrl key for multiple
+          selections.</blockquote>
+      </li>
+      <li>Examine the installation summary page and click Next to begin
+        installation.</li>
+      <li>Click Finish after installation completes to exit the installer.</li>
+      <li>Restart Tivoli Enterprise Portal Desktop Client, Tivoli Enterprise
+        Portal Server, and/or Eclipse Help Server if any of these components are
+        installed.</li>
+    </ol>
+    <p class="indent-level1"> <b>Installing a language pack on a UNIX/Linux system</b> </p>
+    <p class="indent-level2"> To install a language pack, first make sure that
+      you have already installed the product in English, then perform the
+      following steps: </p>
+    <ol class="indent-level2">
+      <li>Run the following command to create a temporary directory on the
+        computer.
+        <blockquote>
+          <pre>mkdir &lt;dir_name&gt;</pre>
+        </blockquote>
+        <blockquote><b>Note</b>: Make sure that the full path of
+          &lt;dir_name&gt; does not contain any spaces</blockquote>
+      </li>
+      <li>Mount the language pack CD to the temporary directory you just
+        created.</li>
+      <li>Run the following command to launch the installation program:
+        <blockquote>
+          <pre>cd &lt;dir_name&gt;<br>lpinstaller.sh -c &#8822;candle_home&gt;</pre>
+        </blockquote>
+        <blockquote><b>Note</b>: &lt;candle_home&gt; is where you
+          installed IBM Tivoli Monitoring, usually it is /opt/IBM/ITM for AIX
+          and Linux.</blockquote>
+      </li>
+      <li>Select the language of the installer and click OK.</li>
+      <li>Click Next on the Introduction panel.</li>
+      <li>Click Add/Update and click Next.</li>
+      <li>Select the folder in which the Language Pack you wish to install are
+        located.</li>
+      <li>Select the languages that you want to install and click Next.</li>
+      <blockquote><b>Note</b>: You can hold down the Ctrl key for multiple
+        selections.</blockquote>
+      <li>Examine the installation summary page and click Next to begin
+        installation.</li>
+      <li>Click Finish after installation completes to exit the installer.</li>
+      <li>Restart the Tivoli Enterprise Portal Desktop Client and/or the Eclipse Help Server if any of these 
+        components are installed.  The Tivoli Enterprise Portal Server will need
+		to be reconfigured and restarted. 
+		</li>
+    </ol>
+    <!---------------------------------------------------------->
+    <!---   Additional Information                               --->
+    <!---------------------------------------------------------->
+    <h2><a name="additional_info"></a>Additional information</h2>
+    <p>This is a cumulative fix pack for IBM Tivoli Monitoring, Version 6.3.0.
+      This fix pack supersedes all previous IBM Tivoli Monitoring versions,
+      including GA Version 6.3.0. This fix pack can be installed in just one
+      step on top of any level of IBM Tivoli Monitoring version 6.1, 6.2, 6.2.1,
+      6.2.2 or 6.2.3.</p>
+    The IBM Tivoli approach for fix packs and interim fixes is to deliver
+    regular, incremental quality improvements.
+    <p>The main areas of quality improvements made in this maintenance
+      deliverable relative to the most recently shipped IBM Tivoli Monitoring
+      release (IBM Tivoli Monitoring 6.3.0) are shown below.</p>
+    <ul>
+      <li> New APAR fixes for Tivoli Monitoring 6.3.0 (See <a href="https://delivery04.dhe.ibm.com/sdfdl/v2/sar/CM/TI/05uba/0/Xa.2/Xb.jusyLTSp44S0BnqOpc--yPaHuK4xI7y904mn__DN_8Tv0ych5oAm0U9XW2g/Xc.CM/TI/05uba/0/6.3.0-TIV-ITM-FP0006_README.html/Xd./Xf.LPR.D1vk/Xg.8501473/Xi.habanero/XY.habanero/XZ.nCrDfOkADA_Ci6VVctNTqFllbT8/6.3.0-TIV-ITM-FP0006_README.html#fixes">List
+          of fixes</a> below) </li>
+      <li> APAR parity with Tivoli Monitoring 6.2.3 Fix Pack 5 (See <a href="https://delivery04.dhe.ibm.com/sdfdl/v2/sar/CM/TI/05uba/0/Xa.2/Xb.jusyLTSp44S0BnqOpc--yPaHuK4xI7y904mn__DN_8Tv0ych5oAm0U9XW2g/Xc.CM/TI/05uba/0/6.3.0-TIV-ITM-FP0006_README.html/Xd./Xf.LPR.D1vk/Xg.8501473/Xi.habanero/XY.habanero/XZ.nCrDfOkADA_Ci6VVctNTqFllbT8/6.3.0-TIV-ITM-FP0006_README.html#forwardFit">Fixes
+          forwarded from 6.2.3</a> below) </li>
+    </ul>
+    <!---------------------------------------------------------->
+    <!---   New Features                                          -->
+    <!---------------------------------------------------------->
+    <h2><a name="new_features"></a>New Features</h2>
+    <p>The following new features are included in IBM Tivoli Monitoring 6.3.0 Fix Pack 6: </p>
+	  <ul>
+		<li>OS Agents Enhancements</li>
+        <ul>
+		  <li>Add Event Integration Facility (EIF) support for the Monitoring Agent for i5/OS to allow events  to be sent directly to OMNIbus. See APAR <a href="http://www.ibm.com/support/docview.wss?uid=swg1IV79364" target="_blank">IV79364</a> for more information.</li> <br>	
+			<li>Add six new attributes expressed in MegaBytes to the Linux 
+				Process attribute group.
+			  See APAR <a href="http://www.ibm.com/support/docview.wss?uid=swg1IV71904" target="_blank">IV71904</a> for more information.</li> <br>	
+		<li>Add new fields to the Linux System Statistics attribute group to show the number of open files.
+			  See APAR <a href="http://www.ibm.com/support/docview.wss?uid=swg1IV68792" target="_blank">IV68792</a> for more information.</li> <br>	
+			<li>Add support for the Monitoring Agent for Linux OS on Community 
+				Enterprise Operating System (CentOS) versions 6.7 and 7.1.     
+				This is limited support as IBM Java does not support 
+				CentOS.  Any issue regarding Java will need to be reproduced on 
+				RedHat OS before it can be addressed. </li><br>
+		<li>Add support for the Monitoring Agent for Windows OS on Windows 10. This support is agent-only. See the following technotes for more 
+			information: <br>
+			<ul>
+				<li>
+				Additional steps when running the Monitoring Agent for Windows OS with a 
+		non-Administrator userid. <br><a href="http://www.ibm.com/support/docview.wss?uid=swg21970041" target="_blank">http://www.ibm.com/support/docview.wss?uid=swg21970041</a></li><br>
+			<li>Technote with additional information that may be required when installing 
+			on Windows systems: <a href="http://www.ibm.com/support/docview.wss?uid=swg21972857" target="_blank">http://www.ibm.com/support/docview.wss?uid=swg21972857</a></li>
+			</ul> 
+			</li><br>
+         </ul>
+		<li>Infrastructure Enhancements</li>
+    <ul>
+		<li>Enhance security by providing a new user permission to restrict the ability of a user to remove an offline managed system. See APAR <a href="http://www.ibm.com/support/docview.wss?uid=swg1IV71473" target="_blank">IV71473</a> for more information.</li> <br>	 
+		<li>Enhance connectivity to handle slow link connections between RTEMS and agents.  See APARs <a href="http://www.ibm.com/support/docview.wss?uid=swg1IV67982" target="_blank">IV67982</a> and <a href="http://www.ibm.com/support/docview.wss?uid=swg1IV67984" target="_blank">IV67984</a> for more information.</li> <br>	 
+		<li>Enhance situation predicates to combine situation predicates 
+			that contain embedded situations. See APAR <a href="http://www.ibm.com/support/docview.wss?uid=swg1IV74529" target="_blank">IV74529</a> for more information.</li> <br>	 
+		<li>Allow the System Administrator to secure Take Action commands issued 
+			by portal client users using the contents of the RKANPARU(KGLUMAP) Dataset.
+			See APAR <a href="http://www.ibm.com/support/docview.wss?uid=swg1OA48482" target="_blank">OA48482</a> for more information.</li> <br>	 
+		<li>Add TLS 1.2 encryption protocol support to the CORBA IIOP 
+			interace in the portal server. <a href="http://www.ibm.com/support/docview.wss?uid=swg1IV74467" target="_blank">IV74467</a> for more information.</li> <br>	 
+    </ul>
+		<li>Currency</li>
+    <ul>
+		<li>Update Java and Windows Certificates.  Includes updating the Microsoft Authenticode signing certificate to latest SHA256 certificate.  
+			<ul>
+			<li>Apply the following Microsoft Hot Fix if issues with Windows 2003 systems: <a href="https://support.microsoft.com/en-us/kb/968730" target="_blank">https://support.microsoft.com/en-us/kb/968730</a> </li> <br>	 
+			<li>Technote with additional information about updating 
+			certificates. <a href="http://www.ibm.com/support/docview.wss?uid=swg21972841" target="_blank">http://www.ibm.com/support/docview.wss?uid=swg21972841</a></li><br>
+			</ul>
+			</li><li>Add support zOS 2.2 USS. </li><br>
+		<li>Add support for Oracle 12c for Tivoli Data Warehouse. The ojdbc6.jar 
+		is required. See the following link for more information:<a href="http://www.oracle.com/technetwork/database/features/jdbc/index-091264.html" target="_blank">http://www.oracle.com/technetwork/database/features/jdbc/index-091264.html</a> </li> <br>	 
+		<li>Nist NIS SP800-131a compliance.</li><br>
+	</ul>	 
+    </ul>
+
+    <!---------------------------------------------------------->
+    <!---   Documentation Updates                                --->                                
+    <!---------------------------------------------------------->
+    <h2><a name="documentation_updates"></a>Online Documentation Updates</h2>
+    <p> <span bold;=""> The following updates pertain to the online documentation:</span></p>
+    <p><a href="http://www.ibm.com/support/knowledgecenter/SSTFXA_6.3.0.2/com.ibm.itm.doc_6.3fp2/install/teps64.htm">http://www.ibm.com/support/knowledgecenter/SSTFXA_6.3.0.2/com.ibm.itm.doc_6.3fp2/install/teps64.htm</a></p>
+    <br>
+    Changes to <a href="http://www.ibm.com/support/knowledgecenter/SSTFXA_6.3.0.2/com.ibm.itm.doc_6.3fp2/install/teps64.htm">Upgrading
+      a 32 bit portal server to 64 bit</a> <br>
+    <div style="margin-left: 40px;"><br>
+      The statement:&nbsp; <br>
+      <br>
+      <span style="color: rgb(0, 0, 0); font-family: Arial, sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; display: inline !important; float: none; background-color: rgb(255, 255, 255);">The
+        installation process does not convert an existing 32-bit<span class="Apple-converted-space">&nbsp;</span></span><span class="keyword" style="color: rgb(0, 0, 0); font-family: Arial, sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255);">Tivoli
+        Enterprise Portal Server</span><span style="color: rgb(0, 0, 0); font-family: Arial, sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; display: inline !important; float: none; background-color: rgb(255, 255, 255);"><span class="Apple-converted-space">&nbsp;</span>running on Linux or UNIX to
+        64 bit (although it does convert an existing 32-bit<span class="Apple-converted-space">&nbsp;</span></span><span class="keyword" style="color: rgb(0, 0, 0); font-family: Arial, sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255);">portal
+        server</span><span style="color: rgb(0, 0, 0); font-family: Arial, sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; display: inline !important; float: none; background-color: rgb(255, 255, 255);"><span class="Apple-converted-space">&nbsp;</span>from a prior release to a
+        32-bit<span class="Apple-converted-space">&nbsp;</span></span><span class="keyword" style="color: rgb(0, 0, 0); font-family: Arial, sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255);">portal
+        server</span><span style="color: rgb(0, 0, 0); font-family: Arial, sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; display: inline !important; float: none; background-color: rgb(255, 255, 255);"><span class="Apple-converted-space">&nbsp;</span>for the current release).<br>
+        <br>
+      </span>Should read:<br>
+      <br>
+      <span style="color: rgb(0, 0, 0); font-family: Arial, sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; display: inline !important; float: none; background-color: rgb(255, 255, 255);">The
+        installation process does not convert an existing 32-bit<span class="Apple-converted-space">&nbsp;</span></span><span class="keyword" style="color: rgb(0, 0, 0); font-family: Arial, sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255);">Tivoli
+        Enterprise Portal Server</span><span style="color: rgb(0, 0, 0); font-family: Arial, sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; display: inline !important; float: none; background-color: rgb(255, 255, 255);"><span class="Apple-converted-space">&nbsp;</span>running on Linux or UNIX to
+        64 bit (although for Intel x86-64 Linux it does convert an existing
+        32-bit<span class="Apple-converted-space">&nbsp;</span></span><span class="keyword" style="color: rgb(0, 0, 0); font-family: Arial, sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255);">portal
+        server</span><span style="color: rgb(0, 0, 0); font-family: Arial, sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; display: inline !important; float: none; background-color: rgb(255, 255, 255);"><span class="Apple-converted-space">&nbsp;</span>from a prior release to a
+        32-bit<span class="Apple-converted-space">&nbsp;</span></span><span class="keyword" style="color: rgb(0, 0, 0); font-family: Arial, sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255);">portal
+        server</span><span style="color: rgb(0, 0, 0); font-family: Arial, sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; display: inline !important; float: none; background-color: rgb(255, 255, 255);"><span class="Apple-converted-space">&nbsp;</span>for the current release).</span><br>
+      <br>
+      Also when reference is made to<span style="font-family: Arial,sans-serif;">
+        "the current release" that means the release being upgraded from and not
+        Version 6.3.0.x&nbsp; So in order to convert from 32 to 64 bit TEPS, you
+        need to apply the conversion for the currently installed IBM Tivoli
+        Monitoring version prior to the upgrade install to Version 6.3.0.x</span><span style="color: rgb(0, 0, 0); font-family: Arial, sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; display: inline !important; float: none; background-color: rgb(255, 255, 255);"><br>
+      </span></div>
+    &nbsp; <br>
+    Changes to <a href="http://www.ibm.com/support/knowledgecenter/SSTFXA_6.3.0.2/com.ibm.itm.doc_6.3fp2/install/webstart_rest.htm">Web
+      Start Client</a> steps 2a. and 4a. should read:<br>
+    <br>
+    <pre style="margin-left: 40px;" class="pre codeblock"><code>&lt;property name="jnlp.tep.connection.protocol" value="http"/&gt;<br></code></pre>
+    Changes to <a href="http://www.ibm.com/support/knowledgecenter/SSTFXA_6.3.0.2/com.ibm.itm.doc_6.3fp2/adminuse/privatesituation_xmlspec.htm">private
+      situation XML specification</a><br>
+    <br>
+    <div style="margin-left: 40px;">The statement:<br>
+      <dl class="dl">
+        <dt class="dt dlterm">&lt;DISTRIBUTION&gt;</dt>
+        <dd class="dd">Required for products with subnodes (subagents).
+          Specifies a managed system name or a list of managed system names
+          separated by a <span class="ph">semi-colon (;)</span>. There is no
+          default value. </dd>
+        <dd class="dd">If you are using the &lt;HISTORY&gt; tag, nest the
+          &lt;DISTRIBUTION&gt; tag within &lt;HISTORY&gt;.</dd>
+      </dl>
+      <p>Should read:</p>
+      <dl class="dl">
+        <dt class="dt dlterm">&lt;DISTRIBUTION&gt;</dt>
+        <dd class="dd">Required for products with subnodes (subagents).
+          Specifies a managed system name or a list of managed system names
+          separated by a <span style="font-weight: bold;">comma</span><span class="ph">
+            (,)</span>. There is no default value. </dd>
+        <dd class="dd">If you are using the &lt;HISTORY&gt; tag, nest the
+          &lt;DISTRIBUTION&gt; tag within &lt;HISTORY&gt;.</dd>
+      </dl>
+    </div>
+    Changes to <a href="http://www.ibm.com/support/knowledgecenter/SSTFXA_6.3.0.2/com.ibm.itm.doc_6.3fp2/adminuse/centralconfig_tutorsetup.htm">Centralized
+      Configuration sample setup</a><br>
+    <br>
+    <div style="margin-left: 40px;">The statement:<br>
+      <br>
+      &nbsp;&nbsp;&nbsp; Create a CNFGLIST that all windows OS agents will use
+      <dl class="dl">
+        <dd class="dd">For our sample, create the <span class="ph">configuration
+            load list</span> in <samp class="ph codeph"><var class="keyword varname">install_dir</var>\configserver\nt\confglist.xml</samp>:</dd>
+      </dl>
+      Should read:<br>
+      <br>
+      &nbsp;&nbsp;&nbsp; Create a CNFGLIST that all windows OS agents will use
+      <dl class="dl">
+        <dd class="dd">For our sample, create the <span class="ph">configuration
+            load list</span> in <samp class="ph codeph"><var class="keyword varname">install_dir</var>\configserver\nt\cnfglist.xml</samp>:</dd>
+      </dl>
+      <p>The statement:</p>
+      <p>&nbsp;&nbsp;&nbsp; Or you can create this <samp class="ph codeph"><var class="keyword varname">install_dir</var>/localconfig/<var class="keyword varname">pc</var>/<var class="keyword varname">pc</var>_confglist.xml</samp> file:</p>
+      <p>Should read:</p>
+      <p>&nbsp;&nbsp;&nbsp; Or you can create this <samp class="ph codeph"><var class="keyword varname">install_dir</var>/localconfig/<var class="keyword varname">pc</var>/<var class="keyword varname">pc</var>_cnfglist.xml</samp> file:</p>
+      <p><br>
+      </p>
+    </div>
+    <h2><a name="fixes"></a>List of fixes</h2>
+    
+<table>
+   <thead>
+   <!--
+      <tr>
+         <th width="75">APAR</td>
+         <th width="600">Symptom</td>
+      </tr>
+   -->
+   </thead>
+   <tbody>
+
+      <tr>
+         <th class="header-left" colspan="2">Agentless OS Monitor APARs</th>
+      </tr>
+      <tr>
+         <td>
+            <a href="http://www.ibm.com/support/docview.wss?uid=swg1IV69577" target="_blank">IV69577</a>
+         </td>
+         <td>
+Linux Agentless gets error collecting Memory attribute group on ls3266 and ls3263.  After about a minute, no data is seen for any of the attribute groups.  The Data Collection Status shows "OBJECT NOT FOUND" error for the Memory attribute group.<br>
+<br>
+The Agentless RAS1 log file will contain the message:<br>
+<br>
+(54E498D9.0000-B:filterqueryclass.cpp,326,"internalCollectData") Could not find query object for attribute group Memory_UCD_hrStorage<br>
+      <br>
+
+         </td>
+      </tr>
+      <tr>
+         <td>
+            <a href="http://www.ibm.com/support/docview.wss?uid=swg1IV75556" target="_blank">IV75556</a>
+         </td>
+         <td>
+Add support to allow System Name to be available in situations for Disk, Processes and Processor attribute groups.  Currently this information is available in a separate attribute group and when used in a situation then selecting a display item is not available.  See Problem Conclusion for more details about new attribute groups added.<br>
+      <br>
+
+         </td>
+      </tr>
+
+      <tr>
+         <th class="header-left" colspan="2">Basic Services APARs</th>
+      </tr>
+      <tr>
+         <td>
+            <a href="http://www.ibm.com/support/docview.wss?uid=swg1IV65928" target="_blank">IV65928</a>
+         </td>
+         <td>
+Setting Tivoli monitoring server environment variable MSG_MODE to a value other than MSG2, e.g.  AVA or KMS, may produce large volumes of RAS1 messages written to Tivoli monitoring server trace log file.<br>
+      <br>
+
+         </td>
+      </tr>
+      <tr>
+         <td>
+            <a href="http://www.ibm.com/support/docview.wss?uid=swg1IV77462" target="_blank">IV77462</a>
+         </td>
+         <td>
+The Tivoli Monitoring AIX Portal Server fails with Remote Procedure Call (RPC) communication errors when started on or after Sept 6, 2015.  This defect is specific to AIX.  The RPC errors (1C010008) occurs due to the latent effects of APAR IV76801.  On AIX, a program fault does not occur, but the arithmatic result is not unique in the UUID generation process.  Activity mismanagement results as a consequence of these non-unique UUIDs, and this results in RPC call failures.  The external manifestation of these RPC call failures are Tivoli Enterprise Portal display failures.<br>
+      <br>
+
+         </td>
+      </tr>
+
+      <tr>
+         <th class="header-left" colspan="2">Command Line Interface APARs</th>
+      </tr>
+      <tr>
+         <td>
+            <a href="http://www.ibm.com/support/docview.wss?uid=swg1IV74283" target="_blank">IV74283</a>
+         </td>
+         <td>
+SOAP CT_ALERT method may cause Tivoli Enterprise Monitoring Server crash.  Consider a SOAP CT_Alert method similar to the following:        <br>
+<br>
+&lt;CT_Alert&gt;                                                       <br>
+        &lt;userid&gt;uid&lt;/userid&gt;                                     <br>
+        &lt;password&gt;uid-pw&lt;/password&gt;                              <br>
+        &lt;name&gt;situation_name&lt;/name&gt;                              <br>
+        &lt;source&gt;ManagedSystemName&lt;/source&gt;                       <br>
+        &lt;data&gt;                                                   <br>
+        &lt;Universal_Messages.Message_Text&gt;"Message text related to the alert"&lt;/Universal_Messages.Message_Text&gt;<br>
+		&lt;Universal_Messages.Message_Severity&gt;alertSeverity&lt;/Universal_Messages.Message_Severity&gt; <br>
+		&lt;Universal_Messages.Category&gt;alertCategory&lt;/Universal_Messages.Category&gt;<br>
+        &lt;/data&gt;                                                  <br>
+        &lt;item&gt;item-id&lt;/item&gt;                                     <br>
+&lt;/CT_Alert&gt;                                                      <br>
+                                                                 <br>
+If for any reason the provided "Message text related to the alert" is longer than 162 character this will force a Tivoli Enterprise Monitoring Server HUB crash.<br>
+      <br>
+
+         </td>
+      </tr>
+      <tr>
+         <td>
+            <a href="http://www.ibm.com/support/docview.wss?uid=swg1IV74718" target="_blank">IV74718</a>
+         </td>
+         <td>
+When running "tacmd viewsit -s &lt;SITNAME&gt; ", the command hangs with a core-dump.<br>
+      <br>
+
+         </td>
+      </tr>
+
+      <tr>
+         <th class="header-left" colspan="2">IBM Monitoring Agent for Linux OS APARs</th>
+      </tr>
+      <tr>
+         <td>
+            <a href="http://www.ibm.com/support/docview.wss?uid=swg1IV68792" target="_blank">IV68792</a>
+         </td>
+         <td>
+Add new attributes to the Linux System Statistics attribute group to show 1) the number of the open files, 2) the maximum number of files that can be open and 3) the number of open files as a percentage of the maximum number of files that can be open.  See the APAR Conclusion for more details about the new attributes.<br>
+      <br>
+
+         </td>
+      </tr>
+      <tr>
+         <td>
+            <a href="http://www.ibm.com/support/docview.wss?uid=swg1IV71612" target="_blank">IV71612</a>
+         </td>
+         <td>
+Due to a lack of synchronization with the internal thread that collects data for the "Disk Usage Trends" attribute group it may happen that the agent crashes while responding to a query or a situation on the "Linux Disk" attribute group, as the two groups share the same filesystems' cache.  The event is rare because the "Disk Usage Trends" thread runs only once per hour by default.<br>
+      <br>
+
+         </td>
+      </tr>
+      <tr>
+         <td>
+            <a href="http://www.ibm.com/support/docview.wss?uid=swg1IV71904" target="_blank">IV71904</a>
+         </td>
+         <td>
+Cannot properly monitor the following memory utilization by Linux processes as they are reported as number of pages: <br>
+Resident Set Size (Pages), Shared Memory (Pages), Text Resident Set (Pages), Shared Lib Resident Set (Pages), Data Resident Set (Pages) and Total Size (Pages).  <br>
+<br>
+Since the size of pages is configurable at the Linux operating system level, and it can largely vary from server to server, these metrics cannot be used to monitor the actual memory footprint of processes, and situations defined on these attributes can trigger in inconsistent ways from server to server. <br>
+<br>
+The fix for this APAR is to add six new attributes expressed in MegaBytes to the Linux Process attribute group.  See the APAR Conclusion for more details of the new attributes.<br>
+      <br>
+
+         </td>
+      </tr>
+      <tr>
+         <td>
+            <a href="http://www.ibm.com/support/docview.wss?uid=swg1IV72089" target="_blank">IV72089</a>
+         </td>
+         <td>
+All of the views in the Historical Summarized Performance, Historical Summarized Capacity and Historical Summarized Availability workspaces of the Monitoring Agent for Linux OS may display empty because of the following error:<br>
+ KFWITM217E Request error: [IBM][CLI Driver][DB2/LINUXZ64]  SQL0204N "ITMUSER.Linux_***_MV" is an undefined name.  SQLSTATE=42704,GENERIC SQLSTATE: 42S02, ERR: -204SQLExecDirect rc=-1: SQL_ERROR  <br>
+This occurs because these views are still based on data warehouse tables of various attribute groups that are superseded since 6.21, and customer has historical data collections enabled only on the corresponding new tables.<br>
+      <br>
+
+         </td>
+      </tr>
+      <tr>
+         <td>
+            <a href="http://www.ibm.com/support/docview.wss?uid=swg1IV72314" target="_blank">IV72314</a>
+         </td>
+         <td>
+The message "Retrieving CPU statistics" gets printed by default in the RAS1 logs of the Monitoring Agent for Linux OS every time a situation on the "Linux CPU" or the "Linux CPU Averages" attribute groups runs.<br>
+      <br>
+
+         </td>
+      </tr>
+      <tr>
+         <td>
+            <a href="http://www.ibm.com/support/docview.wss?uid=swg1IV73792" target="_blank">IV73792</a>
+         </td>
+         <td>
+The Monitoring Agent for Linux OS terminates shortly after startup if the kcirunas.cfg has been updated for an agent that Watchdog is monitoring and is missing the &lt;user&gt; stanza for an instance.<br>
+<br>
+For example, the &lt;user&gt; stanza is missing the from the Instance "None" below: <br>
+<br>
+&lt;productCode&gt;mq&lt;/productCode&gt; <br>
+&lt;instance&gt; <br>
+&lt;name&gt;None&lt;/name&gt; <br>
+&lt;autoStart&gt;no&lt;/autoStart&gt;<br>
+&lt;/instance&gt; <br>
+&lt;instance&gt;<br>
+&lt;name&gt;QAA2438R1&lt;/name&gt; <br>
+&lt;user&gt;mocandle&lt;/user&gt;<br>
+&lt;/instance&gt;<br>
+      <br>
+
+         </td>
+      </tr>
+      <tr>
+         <td>
+            <a href="http://www.ibm.com/support/docview.wss?uid=swg1IV73936" target="_blank">IV73936</a>
+         </td>
+         <td>
+The Monitoring Agent for Linux OS may temporarily incorrectly report 0% or 100% for all of the CPU percent attributes in the Linux CPU attribute group, like User CPU (Percent), System CPU (Percent) or Busy CPU (Percent).  This is the effect of a failure in waiting for the expected time between two consecutive samples.  This behavior is not permanent and normal values are restored within few minutes.<br>
+      <br>
+
+         </td>
+      </tr>
+
+      <tr>
+         <th class="header-left" colspan="2">IBM Monitoring Agent for Unix OS APARs</th>
+      </tr>
+      <tr>
+         <td>
+            <a href="http://www.ibm.com/support/docview.wss?uid=swg1IV69631" target="_blank">IV69631</a>
+         </td>
+         <td>
+When Watchdog is monitoring a non-OS agent and that agent is restarted with a different userid, the Watchdog workspace Agents' Runtime Status does not update the User Name for the process.   This works correctly on Windows.<br>
+      <br>
+
+         </td>
+      </tr>
+      <tr>
+         <td>
+            <a href="http://www.ibm.com/support/docview.wss?uid=swg1IV69716" target="_blank">IV69716</a>
+         </td>
+         <td>
+Two segments in the AIX shared memory are not released by the Monitoring Agent for UNIX OS when it stops.  These segments are allocated during initialization of the SPMI interface by the child process aixdp_daemon and not released at shutdown time.  However they are reused when the agent starts up again.<br>
+      <br>
+
+         </td>
+      </tr>
+      <tr>
+         <td>
+            <a href="http://www.ibm.com/support/docview.wss?uid=swg1IV70848" target="_blank">IV70848</a>
+         </td>
+         <td>
+The Monitoring Agent for UNIX OS is sometimes only installed to support remote deploy of other agents, or to perform take actions or other infrastructural tasks.  No operating system resources actually need to be monitored, but still the agent consumes a lot of CPU and memory because it starts the subdaemons for gathering statistical metrics (stat_daemon, ifstat, kux_vmstat, kuxdstat, nfs_stat, mount_stat and aixdp_daemon).  <br>
+<br>
+In order for this APAR to be properly implemented in your environment, a new environment variable has been added.  See the "Install Actions" section of the APAR conclusion for more details.<br>
+      <br>
+
+         </td>
+      </tr>
+      <tr>
+         <td>
+            <a href="http://www.ibm.com/support/docview.wss?uid=swg1IV71746" target="_blank">IV71746</a>
+         </td>
+         <td>
+The nfs_stat daemon of the Monitoring Agent for UNIX OS terminates when the NFS data are not available although the RPC data are available in Solaris systems.<br>
+      <br>
+
+         </td>
+      </tr>
+      <tr>
+         <td>
+            <a href="http://www.ibm.com/support/docview.wss?uid=swg1IV74060" target="_blank">IV74060</a>
+         </td>
+         <td>
+Monitoring Agent for UNIX OS is not able to monitor more than 4096 disks on AIX platform.<br>
+      <br>
+
+         </td>
+      </tr>
+      <tr>
+         <td>
+            <a href="http://www.ibm.com/support/docview.wss?uid=swg1IV74707" target="_blank">IV74707</a>
+         </td>
+         <td>
+The Monitoring Agent for UNIX OS may take several seconds, or minutes, to respond to queries on the Disk Performance attribute group when running on AIX servers configured with hundreds, or thousands, of physical volumes.  This can lead various infrastructure timeouts to expire and the agent may look like hanging.<br>
+      <br>
+
+         </td>
+      </tr>
+      <tr>
+         <td>
+            <a href="http://www.ibm.com/support/docview.wss?uid=swg1IV75908" target="_blank">IV75908</a>
+         </td>
+         <td>
+After the upgrade to 6.30 FP5 the Summarization and Pruning Agent starts failing to add new rows to the hourly, daily, weekly, monthly, quarterly and yearly summarized tables for the "Unix Memory" attribute group in a DB2 Data Warehouse.  This is because of new columns added to these tables' definitions that make their size cross the DB2 legacy 4Kb limit.<br>
+      <br>
+
+         </td>
+      </tr>
+
+      <tr>
+         <th class="header-left" colspan="2">IBM Monitoring Agent for Windows OS APARs</th>
+      </tr>
+      <tr>
+         <td>
+            <a href="http://www.ibm.com/support/docview.wss?uid=swg1IV63092" target="_blank">IV63092</a>
+         </td>
+         <td>
+The Monitoring Agent for Windows OS reports a Windows 8.1 system as Windows 8 and reports a Windows 2012 R2 system as Windows 2012.<br>
+      <br>
+
+         </td>
+      </tr>
+      <tr>
+         <td>
+            <a href="http://www.ibm.com/support/docview.wss?uid=swg1IV66911" target="_blank">IV66911</a>
+         </td>
+         <td>
+A situation on Local Port Name of the Network Port attribute group does not work in the the Monitoring Agent for Windows OS.  The Local Port Name attribute of the Network Port group can contains some tabs character preventing its correct identification in situation formulas<br>
+      <br>
+
+         </td>
+      </tr>
+      <tr>
+         <td>
+            <a href="http://www.ibm.com/support/docview.wss?uid=swg1IV71943" target="_blank">IV71943</a>
+         </td>
+         <td>
+The Monitoring Agent for Windows OS does not convert to UTF-8 the attributes Friendly_Name and Description of the "Network Interface" attribute group.<br>
+      <br>
+
+         </td>
+      </tr>
+      <tr>
+         <td>
+            <a href="http://www.ibm.com/support/docview.wss?uid=swg1IV72203" target="_blank">IV72203</a>
+         </td>
+         <td>
+No historical data is collected for the Computer Domain Name attribute in the Computer Information attribute group of the Monitoring Agent for Windows OS, if the historical data collection takes place on the Tivoli Enterprise Management Server side.  Both real time data and historical data collected on the  Tivoli Enterprise Management Agent side work fine.<br>
+      <br>
+
+         </td>
+      </tr>
+      <tr>
+         <td>
+            <a href="http://www.ibm.com/support/docview.wss?uid=swg1IV74120" target="_blank">IV74120</a>
+         </td>
+         <td>
+The Monitoring Agent for Windows OS agent crashes if Watchdog is monitoring the MSSQL Agent (koq) which has an instance name greater than 8 characters.<br>
+      <br>
+
+         </td>
+      </tr>
+      <tr>
+         <td>
+            <a href="http://www.ibm.com/support/docview.wss?uid=swg1IV76074" target="_blank">IV76074</a>
+         </td>
+         <td>
+Situations on the File Change attribute group of the Monitoring Agent for Windows OS may send duplicate alerts when the condition evaluates true, if a reflex action is defined.<br>
+      <br>
+
+         </td>
+      </tr>
+
+      <tr>
+         <th class="header-left" colspan="2">IBM Monitoring Agent for i5/OS APARs</th>
+      </tr>
+      <tr>
+         <td>
+            <a href="http://www.ibm.com/support/docview.wss?uid=swg1IV76801" target="_blank">IV76801</a>
+         </td>
+         <td>
+IBM Tivoli Monitoring for IBM i OS agents fail to start after Sept 6, 2015. The problem occurs at agent registration, during which a UUID create suffers a divide overflow.  The IBM i OS agent terminates.               <br>
+      <br>
+
+         </td>
+      </tr>
+
+      <tr>
+         <th class="header-left" colspan="2">IBM Tivoli Enterprise Monitoring Agent APARs</th>
+      </tr>
+      <tr>
+         <td>
+            <a href="http://www.ibm.com/support/docview.wss?uid=swg1IV73766" target="_blank">IV73766</a>
+         </td>
+         <td>
+This APAR addresses several issues:<br>
+<br>
+Item 1.) Any i5/OS platform autonomous agent private situation that includes the *REGEX (Regular Expression) operator will cause the situation to end with an error.<br>
+<br>
+For example, if you define this situation in the localconfig/a4/a4_situations.xml file, the situation will be rejected with an error.<br>
+<br>
+  &lt;privatesit&gt;                                                            <br>
+    &lt;SITUATION NAME="PMR9258869G760" INTERVAL="000000" &gt;&lt;/SITUATION&gt;      <br>
+    &lt;criteria&gt;                                                            <br>
+      &lt;![CDATA[ *VALUE OS400_Message.Message_Queue_Library *EQ QSYS *AND  <br>
+                *VALUE OS400_Message.Message_Queue *EQ QSYSOPR *AND       <br>
+                *REGEX OS400_Message.ID *EQ "CPI80.*" ]]&gt;                 <br>
+    &lt;/criteria&gt;                                                           <br>
+    &lt;sitinfo&gt;                                                             <br>
+      &lt;![CDATA[SEV=CRITICAL;COUNT=1;]]&gt;                                   <br>
+    &lt;/sitinfo&gt;                                                            <br>
+  &lt;/privatesit&gt; <br>
+<br>
+When the agent starts, the RAS1 log will show these error messages:<br>
+<br>
+The private situation definition &lt;PMR9258869G760&gt; is rejected.<br>
+The regular expression &lt;*VALUE OS400_Message.Message_Queue_Library *EQ QSYS *AND *VALUE OS400_Message.Message_Queue *EQ QSYSOPR *AND *REGEX OS400_Message.ID *EQ "CPI80.*"&gt; validation failed at Line 0 offset 0 status U_INVALID_CHAR_FOUND.<br>
+<br>
+This issue occured because the *REGEX input string in the i5/OS EBCDIC private situation is not being properly translated before it gets passed to the TEMA ICU Regular Expression engine.<br>
+<br>
+<br>
+Item 2.) When defining an i5/OS platform private situation using the *REGEX regular expression operator, if the *REGEX value contains square bracket or carot characters, the EIF event sent to Omnibus shows question marks '?' instead of square bracket or carot characters, in the Summary field or slot.  <br>
+This occurs for both CHAR or UTF8 string type attributes.<br>
+<br>
+For example, this situation:<br>
+<br>
+  &lt;privatesit&gt;<br>
+    &lt;SITUATION NAME="i5OS_Disk_Name_REGEX_upper_num" INTERVAL="000500" &gt;&lt;/SITUATION&gt;<br>
+    &lt;criteria&gt;<br>
+      &lt;![CDATA[ *REGEX i5OS_Disk.Name *EQ "[[A-Z]|[0-9]]" ]]&gt;<br>
+    &lt;/criteria&gt;<br>
+    &lt;sitinfo&gt;<br>
+      &lt;![CDATA[ATOM=KA4DISKI5.NAME;SEV=CRITICAL;COUNT=1;]]&gt;<br>
+    &lt;/sitinfo&gt;<br>
+  &lt;/privatesit&gt;<br>
+<br>
+Results in this entry in the Omnibus Event Console summary slot:<br>
+Summary : i5OS_Disk_Name_REGEX_upper_num[Name = ??A-Z?|?0-9?? ]<br>
+<br>
+Any characters used in the regular expression statement should be displayed properly in the resulting EIF event.<br>
+<br>
+<br>
+Item 3.) A specialized issue exists when defining a *REGEX Private Situation with the OS400_Message attribute group using the fix for this APAR IV73766.  When a OS400_Message attribute group situation is started, its data collector attempts to retrieve any OS400_Message messages that were generated in the last 30 minutes.  Including the *REGEX operator in a OS400_Message private situation will result in these existing messages from the last 30 minutes being discarded or thrown away.  Once the *REGEX situation is started, all new messages will be collected and evaluated as expected.<br>
+<br>
+<br>
+Item 4.) The *REGEX operator can not be used with certain attributes from the IBM i OS Agent attribute group named i5OS_Integrated_File_System_Object.  You can not specify a regular expression string for the i5OS_Integrated_File_System_Object.Path or i5OS_Integrated_File_System_Object.Name attributes.  The data collector for these attributes requires valid path and file name values in order to collect data.<br>
+      <br>
+
+         </td>
+      </tr>
+      <tr>
+         <td>
+            <a href="http://www.ibm.com/support/docview.wss?uid=swg1IV79364" target="_blank">IV79364</a>
+         </td>
+         <td>
+Add Event Integration Facility (EIF) support for the Monitoring Agent for i5/OS to allow events to be sent directly to OMNIbus.  See the "Install Actions" section of the APAR conclusion for more details.<br>
+      <br>
+
+         </td>
+      </tr>
+
+      <tr>
+         <th class="header-left" colspan="2">IBM Tivoli Enterprise Monitoring Installation APARs</th>
+      </tr>
+      <tr>
+         <td>
+            <a href="http://www.ibm.com/support/docview.wss?uid=swg1IV67172" target="_blank">IV67172</a>
+         </td>
+         <td>
+Media with Common Installer Version earlier than IBM Tivoli Monitoring 6.30.03.00 may fail to install on Red Hat Enterprise Linux (RHEL) V7 even though the IBM Tivoli Monitoring (ITM) 6.30.03.00 or above Common Installer is already installed. This occurs because the code always uses the platform calculations found on the media.<br>
+      <br>
+
+         </td>
+      </tr>
+      <tr>
+         <td>
+            <a href="http://www.ibm.com/support/docview.wss?uid=swg1IV68546" target="_blank">IV68546</a>
+         </td>
+         <td>
+When a Linux/UNIX agent is configured to not connect to a Monitoring server, the Disable HTTP setting is ignored.<br>
+      <br>
+
+         </td>
+      </tr>
+      <tr>
+         <td>
+            <a href="http://www.ibm.com/support/docview.wss?uid=swg1IV71863" target="_blank">IV71863</a>
+         </td>
+         <td>
+The maximum System Environment PATH variable length may be incorrect for newer versions of the Windows Operating System.  When the installer tries to extend the PATH, it becomes too long and the installation fails.  If the maximum length is correct the installation does not fail and the PATH is updated.<br>
+      <br>
+
+         </td>
+      </tr>
+      <tr>
+         <td>
+            <a href="http://www.ibm.com/support/docview.wss?uid=swg1IV72474" target="_blank">IV72474</a>
+         </td>
+         <td>
+If a new agent builder instance is configured using the "Manage Tivoli Enterprise Monitoring Services" (MTEMS) interface, the agent may fail to start with a message like this:             <br>
+                                                              <br>
+   /opt/IBM/ITM/lx8266/nn/bin/knnagent: error while loading shared libraries: libkbb.so: cannot open shared object file: No such file or directory.                                 <br>
+The libkbb.so library does exist in the proper location.  However, the loader cannot find it because of a configuration error.  The library path in the agent configuration file (${CANDLEHOME}/config/xx*.config) contain spaces in the middle, like this:                              <br>
+<br>
+   KGL_KGLMSGBASE='/opt/IBM/ITM/ tmaitm6/lx8266/bin/KGLMSENU'<br>
+   KBB_ACF1_PATH='/opt/IBM/ITM/ tmaitm6/lx8266/bin'        <br>
+   LD_LIBRARY_PATH='/opt/IBM/ITM/lx8266/gs/lib64:/opt/IBM/ITM/lx8266/nn/lib:/opt/IBM/ITM/ tmaitm6/lx8266/lib'      <br>
+   LD_LIBRARY_PATH_64='/opt/IBM/ITM/lx8266/nn/lib:/opt/IBM/ITM/ tmaitm6/lx8266/lib:/opt/IBM/ITM/lx8266/gs/lib64'   <br>
+   LIBPATH='/opt/IBM/ITM/lx8266/gs/lib64:/opt/IBM/ITM/lx8266/nn/lib:/opt/IBM/ITM/ tmaitm6/lx8266/lib'<br>
+   PATH='/bin:/usr/bin:/opt/IBM/ITM/lx8266/nn/bin:/opt/IBM/ITM/ tmaitm6/lx8266/bin'                                   <br>
+   SHLIB_PATH='/opt/IBM/ITM/lx8266/gs/lib64:/opt/IBM/ITM/lx8266/nn/lib:/opt/IBM/ITM/ tmaitm6/lx8266/lib:/lib:/usr/lib'<br>
+   NLS1_LOCALEDIR='/opt/IBM/ITM/ tmaitm6/lx8266/ax/locale' <br>
+      <br>
+
+         </td>
+      </tr>
+      <tr>
+         <td>
+            <a href="http://www.ibm.com/support/docview.wss?uid=swg1IV72801" target="_blank">IV72801</a>
+         </td>
+         <td>
+For some installations, running the secureMain or SetPerm utility can result in corrupted permissions in the /lib directory.  The known case involves the DB2 agent (component code UD).  If the 6.30.xx.xx version of the UNIX OS agent (component code UX) is installed and then followed by the 7.10.xx.xx version of the UD agent, the conditions for the problem are set.  In this scenario, the installation looks like this:<br>
+<br>
+   # cinfo -t<br>
+   *********** Thu Jun  4 19:37:55 CDT 2015 ******************<br>
+   User: root Groups: system bin sys security cron audit lp itmgroup<br>
+   Host name : xxxxxxxx     Installer Lvl:06.30.06.00<br>
+   CandleHome: /opt/IBM/ITM<br>
+   Version Format: VV.RM.FF.II (V: Version; R: Release; M: Modification; F: Fix; I: Interim Fix)<br>
+   ***********************************************************<br>
+   ...Product inventory<br>
+   PC PRODUCT DESC                                           PLAT   VER         BUILD        INSTALL DATE<br>
+***ax IBM Tivoli Monitoring Shared Libraries                 aix523 06.22.02.00 d0126a       20150604 1541<br>
+***ax IBM Tivoli Monitoring Shared Libraries                 aix526 06.30.06.00 d5134a       20150604 1530<br>
+***gs IBM GSKit Security Interface                           aix526 08.00.50.36 d5127a       -<br>
+   jr Tivoli Enterprise-supplied JRE                         aix523 05.12.01.00 d1075a       -<br>
+   jr Tivoli Enterprise-supplied JRE                         aix526 07.08.10.01 201503261741 -<br>
+   ud IBM Tivoli Composite Application Manager Agent for DB2 aix523 07.10.00.00 31021        20150604 1541<br>
+   ud IBM Tivoli Composite Application Manager Agent for DB2 aix526 07.10.00.00 31021        20150604 1542<br>
+   ui Tivoli Enterprise Services User Interface              aix523 06.22.02.00 d0126a       20150604 1541<br>
+   ui Tivoli Enterprise Services User Interface              aix526 06.30.06.00 d5134a       20150604 1530<br>
+   ux Monitoring Agent for UNIX OS                           aix526 06.30.06.00 51331        20150604 1530<br>
+<br>
+The conditions for the problem exist when an AX component is installed for which the GS component is not.  In this case, the AX component for aix523 and aix526 is installed, but only the GS component for aix526 is installed.  If the secureMain or SetPerm utilities are run while the system is in this state, permissions of files in /lib are adversely affected.<br>
+      <br>
+
+         </td>
+      </tr>
+      <tr>
+         <td>
+            <a href="http://www.ibm.com/support/docview.wss?uid=swg1IV77408" target="_blank">IV77408</a>
+         </td>
+         <td>
+The Java Runtime Environment (JRE) that is installed by IBM Tivoli Monitoring is upgraded as follows: <br>
+   - 1.7.0 SR9 FP1 for CANDLEHOME on AIX, Linux, Solaris, and Windows <br>
+   - 1.6.0 SR16 FP5 for CANDLEHOME HP-UX<br>
+   - 1.7.1 SR3 FP10 for Tivoli Enterprise Portal (TEP) browser clients.<br>
+   <br>
+These updates include changes for CVE-2015-4000, also known as the Logjam attack.<br>
+      <br>
+
+         </td>
+      </tr>
+      <tr>
+         <td>
+            <a href="http://www.ibm.com/support/docview.wss?uid=swg1IV77439" target="_blank">IV77439</a>
+         </td>
+         <td>
+If the name of the installation directory (CANDLEHOME) ends with 'n' or 't', those characters are truncated from the directory name.  Here's an example where "/opt/itmagent" is truncated to "/opt/itmage":                                    <br>
+                                                               <br>
+  # ./install.sh                                               <br>
+  INSTALL                                                      <br>
+                                                               <br>
+  Enter the name of the IBM Tivoli Monitoring installation     <br>
+  directory.                                                   <br>
+  [ default = /opt/IBM/ITM ]: /opt/itmagent                    <br>
+&gt;&gt;"/opt/itmage" does not exist                                 <br>
+  Try to create it [ 1-yes, 2-no; "1" is default ]?            <br>
+<br>
+The same problem exists for the data directory name (CANDLEDATA).<br>
+  <br>
+This problem occurs only for interactive installations on Linux/UNIX, and began with 6.30.05.00 (IV67523).<br>
+      <br>
+
+         </td>
+      </tr>
+      <tr>
+         <td>
+            <a href="http://www.ibm.com/support/docview.wss?uid=swg1IV77775" target="_blank">IV77775</a>
+         </td>
+         <td>
+The new itmCANDLEDATA.sh utility implemented in 6.30.05.00 does not link the CANDLEHOME/auditlogs directory to the CANDLEDATA directory.<br>
+      <br>
+
+         </td>
+      </tr>
+
+      <tr>
+         <th class="header-left" colspan="2">IBM Tivoli Enterprise Monitoring Server APARs</th>
+      </tr>
+      <tr>
+         <td>
+            <a href="http://www.ibm.com/support/docview.wss?uid=swg1IV55651" target="_blank">IV55651</a>
+         </td>
+         <td>
+Display Item with value of -1 displays in Tivoli Enterprise Portal client as 4294967295. In the case of a situation definition that includes a Display Item, where said Display Item is a 4 byte integer type containing a negative value, the Display Item value will be incorrect in the Situation Event Console and the portal client Message Log; it will also be incorrect in the message recorded in the Tivoli Enterprise Monitoring server Operation (MSG2) log.  This incorrect Display Item value only manifests on some operating system platforms, notably on Linux 64 bit platform.<br>
+<br>
+Note, this defect only affects Display Item form of a monitored attribute;  it does not affect the attribute's value in context of situation's formula (predicate) evaluation.<br>
+      <br>
+
+         </td>
+      </tr>
+      <tr>
+         <td>
+            <a href="http://www.ibm.com/support/docview.wss?uid=swg1IV66841" target="_blank">IV66841</a>
+         </td>
+         <td>
+The permission settings of scripts, or files, downloaded by UNIX or Linux Agents from the Centralized Configuration Server prohibits the User, Group or Other from doing anything other than reading, or in the case of User reading and writing to the file (-rw-r--r--) regardless of the file permissions specified on the server.<br>
+      <br>
+
+         </td>
+      </tr>
+      <tr>
+         <td>
+            <a href="http://www.ibm.com/support/docview.wss?uid=swg1IV67076" target="_blank">IV67076</a>
+         </td>
+         <td>
+Tivoli hub monitoring server may fail to reopen situation.  This problem may only occur if hub monitoring server environment variable KDS_SITLOGSIZE is declared as KDS_SITLOGSIZE=32767, which is the maximum size supported for Situation Status History table (TSITSTSH).                              <br>
+                                                                <br>
+The problem affects behavior of a situation that has been acknowledged and subsequently an 'expired' acknowledged event is emitted. After receipt of an 'expired' acknowledgment, normal behavior would be that the situation is reopened, in other words the situation is 'raised' again.  When this APAR is encountered, the situation will fail to be reopened, i.e. 'raised' again. <br>
+<br>
+Note, it is possible to have declared KDS_SITLOGSIZE=32767 and yet never encounter this APAR.  In addition to the requirement of declaring KDS_SITLOGSIZE=32767, various circumstances are needed to cause this APAR to manifest; one such circumstance is event flooding/storms, where large numbers of situation events are rapidly arriving, e.g.  1000 events/minute. <br>
+<br>
+- - - - - - - - - - - - - -<br>
+The best means of confirming an encounter with this APAR is to set following RAS1 trace on hub monitoring server ==&gt;                            <br>
+                                                                        <br>
+KBB_RAS1=ERROR (UNIT:kfastslg ALL)                                      <br>
+                                                                        <br>
+ ...  if  APAR is encountered, one will find in hub monitoring server RAS1 log the following sequence of messages - <br>
+of critical note is the '32767 recs deleted per starting pos of -32768'; this is the signature message for the APAR.                                                           <br>
+                                                                        <br>
+Usually these messages will be found in the *-01.log RAS1 log file.   <br>
+                                                                        <br>
+~ ~ ~ ~                                                                 <br>
+kfastslg.c,..."deleteRecords") Entry                                    <br>
+kfastslg.c,..."deleteRecords") 32767 recs deleted on 'QA1CSTSH' starting pos -32768                                               <br>
+kfastslg.c,..."deleteRecords") Exit: 0x0                                <br>
+kfastslg.c,..."KO4ST_SetupLog") Total recs: 32767, cur ptr: xxxxx, max ptr: 32767 on 'QA1CSTSH'                                 <br>
+~ ~ ~ ~<br>
+      <br>
+
+         </td>
+      </tr>
+      <tr>
+         <td>
+            <a href="http://www.ibm.com/support/docview.wss?uid=swg1IV67488" target="_blank">IV67488</a>
+         </td>
+         <td>
+Situation never closes if an OFFLINE MSN is removed while the Situation is in Open state. A rare scenario was discovered that can result in a Situation with a stale Open event. If while a Situation is open the user stops the Agent for managed system node on which Situation was opened (moving Agent to offline status) and the user also then performs a 'Clear Offline Entry', thereby removing the managed system node, the existing Open event for the Situation will never be closed.   This leaves this Open event in a staled/orphaned state.<br>
+      <br>
+
+         </td>
+      </tr>
+      <tr>
+         <td>
+            <a href="http://www.ibm.com/support/docview.wss?uid=swg1IV67982" target="_blank">IV67982</a>
+         </td>
+         <td>
+When a remote monitoring server is shutdown, for each Situation running at remote monitoring server a 'stop' event is being sent to HUB monitoring server. This is inefficient since regardless of how many Situations are running at remote monitoring server they will all be stopped because the remote monitoring server is shutting down.<br>
+<br>
+If there is a slow network link between remote monitoring server and HUB monitoring server the aggregate of data transfer time over the network plus processing time for the collection of individual 'stop' events is exacerbated and in turn results in a protracted time lapse before remote monitoring server completes shutdown.<br>
+      <br>
+
+         </td>
+      </tr>
+      <tr>
+         <td>
+            <a href="http://www.ibm.com/support/docview.wss?uid=swg1IV67984" target="_blank">IV67984</a>
+         </td>
+         <td>
+When a remote monitoring server is shutdown, for each Situation running at remote monitoring server a 'stop' event is being sent to HUB monitoring server. This is inefficient since regardless of how many Situations are running at remote monitoring server they will all be stopped because the remote monitoring server is shutting down.<br>
+<br>
+If there is a slow network link between remote monitoring server and HUB monitoring server the aggregate of data transfer time over the network plus processing time for the collection of individual 'stop' events is exacerbated and in turn results in a protracted time lapse before remote monitoring server completes shutdown.<br>
+      <br>
+
+         </td>
+      </tr>
+      <tr>
+         <td>
+            <a href="http://www.ibm.com/support/docview.wss?uid=swg1IV69144" target="_blank">IV69144</a>
+         </td>
+         <td>
+The monitoring server or agent can consume large amounts of CPU in KGE component during startup. The KGE component uses the getpwnam() function provided by the operating system to acquire a list of all root users during startup.  The function is inefficient and uses a large amount of CPU to accomplish its function.<br>
+      <br>
+
+         </td>
+      </tr>
+      <tr>
+         <td>
+            <a href="http://www.ibm.com/support/docview.wss?uid=swg1IV71318" target="_blank">IV71318</a>
+         </td>
+         <td>
+The node list or node status table can become out of sync between the HUB and standby Tivoli Enterprise Monitoring Server.  This can occur under several circumstances.<br>
+      <br>
+
+         </td>
+      </tr>
+      <tr>
+         <td>
+            <a href="http://www.ibm.com/support/docview.wss?uid=swg1IV73382" target="_blank">IV73382</a>
+         </td>
+         <td>
+Given a situation with extensive formula that produces large amount of literal text or large filter plan, the situation will fail to start and appear via Tivoli Enterprise Portal in 'Problem' status.  This failure is due to error during attempt to allocate memory for situation's data structures.  <br>
+Example case is situation using *IN clause that contains large number of entries where large number varies, but typically at least 15 entries need to be present in list of the *IN clause.<br>
+<br>
+Another form of large predicates that may also produce memory allocation error is situation that declares numerous SCAN, STR or LIKE comparisons against an attribute that has a large maximum length, e.g.  1024 or 2048 characters.<br>
+      <br>
+
+         </td>
+      </tr>
+      <tr>
+         <td>
+            <a href="http://www.ibm.com/support/docview.wss?uid=swg1IV73939" target="_blank">IV73939</a>
+         </td>
+         <td>
+The KO49045 buffer exceeded message can sometimes be issued when it should not.  The result is the event is lost and the situation is stopped at the agent that sent in the event data.<br>
+      <br>
+
+         </td>
+      </tr>
+      <tr>
+         <td>
+            <a href="http://www.ibm.com/support/docview.wss?uid=swg1IV74529" target="_blank">IV74529</a>
+         </td>
+         <td>
+Situation with embedded situation(s) may incorrectly be raised/opened. The assumption users make is that different criteria can be split across multiple situations which are then combined within a containing situation and that events opened by this containing situation will have satisfied all of the criteria defined within the contained (embedded) situations.<br>
+<br>
+However, this is not the case ...  the containing situation may open events that satisfy only a subset of the contained predicates.<br>
+<br>
+Example:<br>
+<br>
+The user writes a situation with the formula :   SitA = IF processName = 'abc' AND CPU% &gt; 20 AND memoryUtil &gt; 5<br>
+<br>
+As expected, this situation will only open an event when process 'abc' consumes more than 20% CPU and is using more than 5MB memory.<br>
+<br>
+Now the user splits these 3 predicates into 2 other situations and combines both within a third situation. [Of course, this is not necessary in this simple example because the formula easily fits within a single situation definition but it is sufficient to illustrate the problem].<br>
+<br>
+SitX = IF processName = 'abc'<br>
+SitY = IF CPU% &gt; 20<br>
+SitZ = IF memoryUtil &gt; 5 AND SitX AND SitY<br>
+<br>
+Although SitX is looking for process 'abc' and SitY is looking for a CPU utilization of &gt; 20% and both of these are contained within SitZ which is checking for memory utilization of more than 5MB, <br>
+SitZ will open an event if *any* process is using more than 5MB as long as process 'abc' is running, (regardless of its CPU and memory utilization), and at least one process is using &gt; 20% <br>
+(regardless of its name and memory utilization).<br>
+<br>
+In other words, each part of SitZ predicate is evaluated independently, which is not behavior expected by user.<br>
+<br>
+In order for this APAR to be properly implemented in your environment, a new environment variable has been added.  See the "Install Actions" section of the APAR conclusion for more details.<br>
+      <br>
+
+         </td>
+      </tr>
+      <tr>
+         <td>
+            <a href="http://www.ibm.com/support/docview.wss?uid=swg1IV74758" target="_blank">IV74758</a>
+         </td>
+         <td>
+Given a situation that contains UNTIL and Display Items, for example 'Sit_A is TRUE UNTIL Sit_B is TRUE' where Sit_A and Sit_B each have a DisplayItem declared, but Display Item for Sit_A is from different attribute group than Sit_B's Display Item.<br>
+ <br>
+When Sit_B becomes TRUE for any one open instance of Sit_A then all opened Sit_A's will be closed, though user expects only that one opened Sit_A instance to close.<br>
+<br>
+In order for this APAR to be properly implemented in your environment, a new environment variable has been added. See the "Install Actions" section of the APAR conclusion for more details.<br>
+<br>
+Here is a detailed description and example of the undesired behavior that occurs without adopting this APAR fix.<br>
+<br>
+For example, given Sit_A and Sit_B  and given two attribute groups named attrGrp_1 and attrGrp_2 and given that there is an attribute called myFavoriteAttr that is defined in each of the two attribute groups, the following construct is NOT supported  ==&gt;                                                               <br>
+Sit_A is TRUE using DisplayItem attrGrp_1.myFavoriteAttr          <br>
+     UNTIL Sit_B is TRUE using DisplayItem attrGrp_2.myFavoriteAttr                                          <br>
+                                                                  <br>
+The above is not supported because attrGrp_1.myFavoriteAttr and attrGrp_2.myFavoriteAttr are different attributes <br>
+declared for the respective DisplayItems.                                      <br>
+                                                                  <br>
+This draws focus to the fact that an attribute is not unique per the naked attribute name, i.e.  myFavoriteAttr;  rather a unique attribute must be fully qualified by the combination of attribute group plus attribute name, i.e.  attrGrp_1.myFavoriteAttr .                                        <br>
+                                                                  <br>
+<br>
+This was recreated in Windows OS Agent with a base situation against two ProcessID values per attribute NTPROCESS.IDPROCESS; <br>
+the DisplayItem is Process Name, per NTPROCESS.INSTCNAME.<br>
+ <br>
+   IF #'NTPROCESS.IDPROCESS' == 4 OR  #'NTPROCESS.IDPROCESS' == 4320<br>
+<br>
+The UNTIL situation was against WTPROCESS.IDPROCESS for just one of the ProcessID values;<br>
+The DisplayItem is Process Name, per WTPROCESS.INSTCNAME.  Note, WTPROCESS is different Attribute Group from base Sit's NTPROCESS. <br>
+ <br>
+   IF #'WTPROCESS.IDPROCESS' == 4320<br>
+  <br>
+So we have an attribute, Process Name, that is being used from two separate Attribute Groups.  <br>
+ <br>
+Assuming processes are running with ProcessIDs of 4 and 4320, the Base Situation is correctly opened for each ProcessID.  When the UNTIL situation is evaluated, the opened Base Situation for ProcessID 4320 will be correctly closed.   However, the opened Base Situation for ProcessID 4 will incorrectly be closed - it should have remained open since the UNTIL situation is not TRUE for ProcessID equal to 4.<br>
+      <br>
+
+         </td>
+      </tr>
+      <tr>
+         <td>
+            <a href="http://www.ibm.com/support/docview.wss?uid=swg1IV75229" target="_blank">IV75229</a>
+         </td>
+         <td>
+Update Situation Update Forwarder JRE to 1.6 SR16 FP5.<br>
+      <br>
+
+         </td>
+      </tr>
+      <tr>
+         <td>
+            <a href="http://www.ibm.com/support/docview.wss?uid=swg1IV76109" target="_blank">IV76109</a>
+         </td>
+         <td>
+Using the updateframework command to update the Tivoli Enterprise Management Agent framework does not update the kax component for architecture li6263.  After the update, the kax component remains at the prior level.<br>
+      <br>
+
+         </td>
+      </tr>
+      <tr>
+         <td>
+            <a href="http://www.ibm.com/support/docview.wss?uid=swg1IV78573" target="_blank">IV78573</a>
+         </td>
+         <td>
+The Tivoli Monitoring KDE_TRANSPORT environment variable 'POOL:' keyword does not permit configuration of socket port pools on the LOOPBACK device.<br>
+<br>
+In order for this APAR to be properly implemented in your environment, a new environment variable has been added.  See the "Install Actions" section of the APAR conclusion for more details.<br>
+      <br>
+
+         </td>
+      </tr>
+
+      <tr>
+         <th class="header-left" colspan="2">IBM Tivoli Enterprise Portal Client APARs</th>
+      </tr>
+      <tr>
+         <td>
+            <a href="http://www.ibm.com/support/docview.wss?uid=swg1IV65987" target="_blank">IV65987</a>
+         </td>
+         <td>
+If the column to the left or the right of the "Opened" column is moved, this changes the index of both the "Opened" and the column that is moved.  This causes the "Age" column to stop updating as it relies on the date/time data in the "Opened" column for it's calculation.  Changing the "Opened" column causes the incorrect date and time data to be retrieved.<br>
+      <br>
+
+         </td>
+      </tr>
+      <tr>
+         <td>
+            <a href="http://www.ibm.com/support/docview.wss?uid=swg1IV74037" target="_blank">IV74037</a>
+         </td>
+         <td>
+The KRV application workspace view timespan button disables. In the CBTI BKUPEND workspace event view, the historical time span dialog does not re-enable after selecting and setting historical query options.<br>
+      <br>
+
+         </td>
+      </tr>
+      <tr>
+         <td>
+            <a href="http://www.ibm.com/support/docview.wss?uid=swg1IV75054" target="_blank">IV75054</a>
+         </td>
+         <td>
+When using the launch feature in the tivoli portal client, the launch definition can contain variables that being with an anpersand.  The variables should be properly resolved to the proper display name when the definition is launched.<br>
+      <br>
+
+         </td>
+      </tr>
+
+      <tr>
+         <th class="header-left" colspan="2">IBM Tivoli Enterprise Portal Server APARs</th>
+      </tr>
+      <tr>
+         <td>
+            <a href="http://www.ibm.com/support/docview.wss?uid=swg1IV66557" target="_blank">IV66557</a>
+         </td>
+         <td>
+Users are unable to log in to the portal client.  The portal server log shows many messages similar to the following:<br>
+<br>
+ERRMSG: Warning: 100 active connections.  Retry #4 on datasource 'TEPS'<br>
+<br>
+The problem may start during an execution of the migrate-export script.<br>
+      <br>
+
+         </td>
+      </tr>
+      <tr>
+         <td>
+            <a href="http://www.ibm.com/support/docview.wss?uid=swg1IV67425" target="_blank">IV67425</a>
+         </td>
+         <td>
+Omegamon Z/os agent 1 byte unsigned integers not supported in IBM Tivoli Monitoring data provider. The 1 byte integer value used by several of the Omegamon agents are not being formatted correctly in the data provider.<br>
+      <br>
+
+         </td>
+      </tr>
+      <tr>
+         <td>
+            <a href="http://www.ibm.com/support/docview.wss?uid=swg1IV69246" target="_blank">IV69246</a>
+         </td>
+         <td>
+On the Self-Monitoring Topology, last heartbeat times for agents connected to a remote Tivoli Enterprise Monitoring Server are incorrect.<br>
+      <br>
+
+         </td>
+      </tr>
+      <tr>
+         <td>
+            <a href="http://www.ibm.com/support/docview.wss?uid=swg1IV70669" target="_blank">IV70669</a>
+         </td>
+         <td>
+With the Tivoli Enterprise Portal Client history collection configuration window open, Portal client showed KFWITM217E error if the database connection was disconnected and restored.<br>
+<br>
+This is the popup message:<br>
+----------------------------------------------------------------<br>
+Cannot load Product Configuration data<br>
+KFWITM217E Request error:[IBM][CLI Driver] SQL1224N The database manager is not able to accept new requests, has<br>
+terminated all requests in progress, or has terminated the specified request because of an error or a forced interrupt.<br>
+SQLSTATE=55032, GENERIC SQLSTATE:40003, ERR:-1224 SQLExecDirect rc=-1:SQL_ERROR<br>
+----------------------------------------------------------------<br>
+<br>
+Once "OK" button was clicked on that message, the historical collection configuration worked just fine.<br>
+      <br>
+
+         </td>
+      </tr>
+      <tr>
+         <td>
+            <a href="http://www.ibm.com/support/docview.wss?uid=swg1IV71253" target="_blank">IV71253</a>
+         </td>
+         <td>
+The tepsRestore script can run very slow, for example taking more than 6 hours to complete. <br>
+      <br>
+
+         </td>
+      </tr>
+      <tr>
+         <td>
+            <a href="http://www.ibm.com/support/docview.wss?uid=swg1IV71473" target="_blank">IV71473</a>
+         </td>
+         <td>
+Add new functionality to allow administrators to restrict which users have the permission to perform the "clear offline entry" function that deletes offline managed systems from the physical navigator.<br>
+      <br>
+
+         </td>
+      </tr>
+      <tr>
+         <td>
+            <a href="http://www.ibm.com/support/docview.wss?uid=swg1IV72146" target="_blank">IV72146</a>
+         </td>
+         <td>
+Users are not locked out after exceeding the number of invalid login attempts defined in KFW_AUTHORIZATION_MAX_INVALID_LOGIN.<br>
+      <br>
+
+         </td>
+      </tr>
+      <tr>
+         <td>
+            <a href="http://www.ibm.com/support/docview.wss?uid=swg1IV73322" target="_blank">IV73322</a>
+         </td>
+         <td>
+Empty Managed System List is not manipulated correctly by Tivoli Enterprise Portal Client. Empty Managed System List is supported by Tivoli Enterprise Portal Client and tacmd command starting ITM Tivoli Monitoring 6.3 Fix Pack 2 . However, Empty Managed System List is not creatable from Tivoli Enterprise Portal Client.<br>
+<br>
+Also, when Managed System List removes the last managed system member from Tivoli Enterprise Portal Client, it removes the empty Managed System List.<br>
+The Emtpy MSL remains live in IBM  Tivoli Monitoring 6.3 Fix Pack 2 and Fix Pack 3.<br>
+     <br>
+
+         </td>
+      </tr>
+      <tr>
+         <td>
+            <a href="http://www.ibm.com/support/docview.wss?uid=swg1IV73932" target="_blank">IV73932</a>
+         </td>
+         <td>
+When creating a new Tivoli Enterprise Portal user that uses LDAP to determine the distinguished name (DN), if the DN contains any single quote marks, the newly created user does not contain the correct DN.  The new user cannot log in.  If the portal server is restarted, the DN will be from the defaultWIMITMBasedRealm.  This only occurs if the portal server is using Microsoft SQL Server as the database.<br>
+      <br>
+
+         </td>
+      </tr>
+      <tr>
+         <td>
+            <a href="http://www.ibm.com/support/docview.wss?uid=swg1IV74065" target="_blank">IV74065</a>
+         </td>
+         <td>
+Added support so the Owner column shows up in the event payload from the IBM Tivoli Monitoring data provider.<br>
+      <br>
+
+         </td>
+      </tr>
+      <tr>
+         <td>
+            <a href="http://www.ibm.com/support/docview.wss?uid=swg1IV74467" target="_blank">IV74467</a>
+         </td>
+         <td>
+Add support for TLS 1.2 encryption protocol to the CORBA IIOP interface.<br>
+      <br>
+
+         </td>
+      </tr>
+      <tr>
+         <td>
+            <a href="http://www.ibm.com/support/docview.wss?uid=swg1IV74486" target="_blank">IV74486</a>
+         </td>
+         <td>
+Remove insecure ciphers from portal server interface.<br>
+      <br>
+
+         </td>
+      </tr>
+      <tr>
+         <td>
+            <a href="http://www.ibm.com/support/docview.wss?uid=swg1IV75571" target="_blank">IV75571</a>
+         </td>
+         <td>
+Some attributes incorrectly scaled in the JAZZ/sm UI (DASH). The problem was orginally reported by the KI5 agent.  The Jazz/sm widgets use the valueMax field for calulation of the scale value for integer display.  The IBM Tivoli Monitoring data provider was changed to allow for proper formatting on the UI side.<br>
+      <br>
+
+         </td>
+      </tr>
+
+      <tr>
+         <th class="header-left" colspan="2">Performance Analyzer APARs</th>
+      </tr>
+      <tr>
+         <td>
+            <a href="http://www.ibm.com/support/docview.wss?uid=swg1IV63947" target="_blank">IV63947</a>
+         </td>
+         <td>
+If an existing ITPA task is modified from the ITPA configuration GUI and some Japanese/Chinese characters are input, the task will fail to be saved or it will contain garbage characters. If saving the modified task failed, the task will be removed from database, and the next time when trying to save it from backup, it will still fail.<br>
+      <br>
+
+         </td>
+      </tr>
+
+      <tr>
+         <th class="header-left" colspan="2">Remote Deploy APARs</th>
+      </tr>
+      <tr>
+         <td>
+            <a href="http://www.ibm.com/support/docview.wss?uid=swg1IV60994" target="_blank">IV60994</a>
+         </td>
+         <td>
+Specifying incomplete or incorrect command line arguments for the command line command setagentconnection will result in a segmentation fault or a silent failure returning no results.<br>
+      <br>
+
+         </td>
+      </tr>
+      <tr>
+         <td>
+            <a href="http://www.ibm.com/support/docview.wss?uid=swg1IV70115" target="_blank">IV70115</a>
+         </td>
+         <td>
+When the TEMA Framework constructs a message for output to the Probe Status Log (LG0, LG1, ...) the message is constructed in a buffer whose total length is less than the message for display.  As a result, when the message is written to the buffer, the message overwrites stack storage outside of the buffer space, eventually resulting in the Agent's abnormal termination.<br>
+      <br>
+
+         </td>
+      </tr>
+      <tr>
+         <td>
+            <a href="http://www.ibm.com/support/docview.wss?uid=swg1IV71647" target="_blank">IV71647</a>
+         </td>
+         <td>
+Parameters specified by the user for the command line command setagentconnection are not correctly parsed which may result in the command parameters not taking effect for the target agent.  Fox example, specifying a parameter of PROTOCOL1=IP.PIPE for the command setagentconnection does not result in change in the target system's configuration.  The configuration of the target system remains the same as before the command is issued.<br>
+      <br>
+
+         </td>
+      </tr>
+      <tr>
+         <td>
+            <a href="http://www.ibm.com/support/docview.wss?uid=swg1IV75592" target="_blank">IV75592</a>
+         </td>
+         <td>
+The component responsible for parsing the user's command parameters does not detect the presence of a Secondary Server when there are multiple protocols defined for that Secondary Server.  The resulting configuration file produced by this component does not include the Keywords IPPIPE_Host and FTO_IPPIPE_Host and their values.<br>
+      <br>
+
+         </td>
+      </tr>
+   </tbody>
+</table>
+
+
+    <h2><a name="forwardFit"></a>Fixes forwarded from 6.2.3</h2>
+    <p class="indent-level1"> Problems originally corrected in IBM Tivoli
+      Monitoring 6.2.3 Fix Pack 5 (cumulative) have also been corrected in 6.3.0
+      Fix Pack 4 and later. </p>
+    <p class="indent-level1"> Tivoli Monitoring maintains a Technote that
+      describes the APAR parity between all recently released fix packs across
+      releases of IBM Tivoli Monitoring version 6, namely versions 6.1.0, 6.2.0,
+      6.2.1, 6.2.2, 6.2.3, and 6.3.0. </p>
+    <p class="indent-level2"> Refer to this Technote for additional information:<br>
+      <br>
+      <a href="http://www.ibm.com/support/docview.wss?uid=swg21358804" target="_blank">http://www.ibm.com/support/docview.wss?uid=swg21358804</a><br>
+      <br>
+    </p>
+    <br>
+    <h2><a name="copyright"></a>Copyright and trademark information</h2>
+    <a href="http://www.ibm.com/legal/copytrade.shtml_" target="_blank">http://www.ibm.com/legal/copytrade.shtml</a>
+    <br>
+    <h3> Notices</h3>
+    This information was developed for products and services offered in the
+    U.S.A. IBM may not offer the products, services, or features discussed in
+    this document in other countries. Consult your local IBM representative for
+    information on the products and services currently available in your
+    area.&nbsp; Any reference to an IBM product, program, or service is not
+    intended to state or imply that only that IBM product, program, or service
+    may be used. Any functionally equivalent product, program, or service that
+    does not infringe any IBM intellectual property right may be used instead.
+    However, it is the user's responsibility to evaluate and verify the
+    operation of any non-IBM product, program, or service.<br>
+    <br>
+    IBM may have patents or pending patent applications covering subject matter
+    described in this document. The furnishing of this document does not give
+    you any license to these patents. You can send license inquiries, in
+    writing, to:<br>
+    <br>
+    IBM Director of Licensing<br>
+    IBM Corporation<br>
+    North Castle Drive<br>
+    Armonk, NY 10504-1785 U.S.A.<br>
+    <br>
+    For license inquiries regarding double-byte (DBCS) information, contact the
+    IBM Intellectual Property Department in your country or send inquiries, in
+    writing, to:<br>
+    <br>
+    Intellectual Property Licensing<br>
+    Legal and Intellectual Property Law<br>
+    IBM Japan, Ltd.<br>
+    1623-14, Shimotsuruma, Yamato-shi<br>
+    Kanagawa 242-8502 Japan<br>
+    <br>
+    The following paragraph does not apply to the United Kingdom or any other
+    country where such provisions are inconsistent with local law:<br>
+    <br>
+    INTERNATIONAL BUSINESS MACHINES CORPORATION PROVIDES THIS PUBLICATION "AS
+    IS" WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING, BUT
+    NOT LIMITED TO, THE IMPLIED WARRANTIES OF NON-INFRINGEMENT, MERCHANTABILITY
+    OR FITNESS FOR A PARTICULAR PURPOSE.<br>
+    <br>
+    Some states do not allow disclaimer of express or implied warranties in
+    certain transactions, therefore, this statement might not apply to you. This
+    information could include technical inaccuracies or typographical
+    errors.&nbsp; Changes are periodically made to the information herein; these
+    changes will be incorporated in new editions of the publication. IBM may
+    make improvements and/or changes in the product(s) and/or the program(s)
+    described in this publication at any time without notice.<br>
+    <br>
+    Any references in this information to non-IBM Web sites are provided for
+    convenience only and do not in any manner serve as an endorsement of those
+    Web sites. The materials at those Web sites are not part of the materials
+    for this IBM product and use of those Web sites is at your own risk.<br>
+    <br>
+    IBM may use or distribute any of the information you supply in any way it
+    believes appropriate without incurring any obligation to you.<br>
+    <br>
+    Licensees of this program who wish to have information about it for the
+    purpose of enabling: (i) the exchange of information between independently
+    created programs and other programs (including this one) and (ii) the mutual
+    use of the information which has been exchanged, should contact:<br>
+    <br>
+    IBM Corporation<br>
+    2Z4A/101<br>
+    11400 Burnet Road<br>
+    Austin, TX 78758 U.S.A.<br>
+    <br>
+    Such information may be available, subject to appropriate terms and
+    conditions, including in some cases payment of a fee.<br>
+    <br>
+    The licensed program described in this document and all licensed material
+    available for it are provided by IBM under terms of the IBM Customer
+    Agreement, IBM International Program License Agreement or any equivalent
+    agreement between us.<br>
+    <br>
+    Any performance data contained herein was determined in a controlled
+    environment. Therefore, the results obtained in other operating environments
+    may vary significantly. Some measurements may have been made on
+    development-level systems and there is no guarantee that these measurements
+    will be the same on generally available systems. Furthermore, some
+    measurement may have been estimated through extrapolation. Actual results
+    may vary. Users of this document should verify the applicable data for their
+    specific environment.<br>
+    <br>
+    Information concerning non-IBM products was obtained from the suppliers of
+    those products, their published announcements or other publicly available
+    sources. IBM has not tested those products and cannot confirm the accuracy
+    of performance, compatibility or any other claims related to non-IBM
+    products.&nbsp; Questions on the capabilities of non-IBM products should be
+    addressed to the suppliers of those products.<br>
+    <br>
+    All statements regarding IBM's future direction or intent are subject to
+    change or withdrawal without notice, and represent goals and objectives
+    only.<br>
+    <br>
+    All IBM prices shown are IBM's suggested retail prices, are current and are
+    subject to change without notice. Dealer prices may vary.<br>
+    <br>
+    This information is for planning purposes only. The information herein is
+    subject to change before the products described become available.<br>
+    <br>
+    This information contains examples of data and reports used in daily
+    business operations. To illustrate them as completely as possible, the
+    examples include the names of individuals, companies, brands, and products.
+    All of these names are fictitious and any similarity to the names and
+    addresses used by an actual business enterprise is entirely coincidental.<br>
+    <h3> COPYRIGHT LICENSE</h3>
+    This information contains sample application programs in source language,
+    which illustrate programming techniques on various operating platforms. You
+    may copy, modify, and distribute these sample programs in any form without
+    payment to IBM, for the purposes of developing, using, marketing or
+    distributing application programs conforming to the application programming
+    interface for the operating platform for which the sample programs are
+    written. These examples have not been thoroughly tested under all
+    conditions.&nbsp; IBM, therefore, cannot guarantee or imply reliability,
+    serviceability, or function of these programs. You may copy, modify, and
+    distribute these sample programs in any form without payment to IBM for the
+    purposes of developing, using, marketing, or distributing application
+    programs conforming to IBM‘s application programming interfaces.<br>
+    <br>
+    Each copy or any portion of these sample programs or any derivative work,
+    must include a copyright notice as follows:<br>
+    <br>
+    © (your company name) (year). Portions of this code are derived from IBM
+    Corp.&nbsp; Sample Programs. © Copyright IBM Corp. _enter the year or
+    years_. All rights reserved.<br>
+    <br>
+    If you are viewing this information in softcopy form, the photographs and
+    color illustrations might not be displayed.<br>
+    <br>
+    <h3> A.1 Trademarks </h3>
+    <br>
+    IBM, the IBM logo, and ibm.com® are trademarks or registered trademarks of
+    International Business Machines Corp., registered in many jurisdictions
+    worldwide. Other product and service names might be trademarks of IBM or
+    other companies. A current list of IBM trademarks is available on the Web at
+    “Copyright and trademark information” at <a href="http://www.ibm.com/legal/copytrade.shtml" target="_blank">http://www.ibm.com/legal/copytrade.shtml</a>. <br>
+    <br>
+    Adobe®, Acrobat, PostScript® and all Adobe-based trademarks are either
+    registered trademarks or trademarks of Adobe Systems Incorporated in the
+    United States, other countries, or both.<br>
+    <br>
+    Cell Broadband Engine™ and Cell/B.E. are trademarks of Sony Computer
+    Entertainment, Inc., in the United States, other countries, or both and is
+    used under license therefrom.<br>
+    <br>
+    Intel®, Intel logo, Intel Inside®, Intel Inside logo, Intel® Centrino®,
+    Intel Centrino logo, Celeron®, Intel Xeon®, Intel SpeedStep®, Itanium, and
+    Pentium® are trademarks or registered trademarks of Intel Corporation or its
+    subsidiaries in the United States and other countries.<br>
+    <br>
+    IT Infrastructure Library® is a registered trademark of the Central Computer
+    and Telecommunications Agency which is now part of the Office of Government
+    Commerce. <br>
+    <br>
+    ITIL® is a registered trademark, and a registered community trademark of the
+    Office of Government Commerce, and is registered in the U.S. Patent and
+    Trademark Office.<br>
+    <br>
+    Java™ and all Java-based trademarks and logos are trademarks or registered
+    trademarks of Sun Microsystems, Inc. in the United States, other countries,
+    or both.<br>
+    <br>
+    Linux is a trademark of Linus Torvalds in the United States, other
+    countries, or both.<br>
+    <br>
+    Microsoft, Windows, Windows NT, and the Windows logo are trademarks of
+    Microsoft Corporation in the United States, other countries, or both.<br>
+    <br>
+    UNIX is a registered trademark of The Open Group in the United States and
+    other countries.<br>
+    <br>
+    Other company, product, and service names may be trademarks or service marks
+    of others.<br>
+    <br>
+    <h2><a name="change_history"></a>Document change history</h2>
+    <table style="width: 643px;">
+      <tbody>
+        <tr>
+          <td>December 10, 2015</td>
+          <td>Original version</td>
+	</tr>
+      </tbody>
+    </table>
+    <br>
+  
+
+</body></html>
